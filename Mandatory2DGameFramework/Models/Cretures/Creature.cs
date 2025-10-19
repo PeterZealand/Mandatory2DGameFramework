@@ -1,5 +1,5 @@
-﻿using Mandatory2DGameFramework.model.attack;
-using Mandatory2DGameFramework.model.defence;
+﻿using Mandatory2DGameFramework.model.defence;
+using Mandatory2DGameFramework.Models.Attack;
 using Mandatory2DGameFramework.worlds;
 using System;
 using System.Collections.Generic;
