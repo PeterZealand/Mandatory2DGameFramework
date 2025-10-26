@@ -42,7 +42,7 @@ namespace Mandatory2DGameFramework.model.Cretures
         public void ReceiveHit(int hit)
         {
             // reduce incoming hit by defence if present, clamp to non-negative and apply to HitPoint
-            int reduction = Defence?.ReduceHitPoint ?? 0;
+            int reduction = Defence?.DecreaseDamageTaken ?? 0;
             int net = hit - reduction;
             if (net < 0) net = 0;
 
@@ -81,7 +81,7 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Defence;
                         Defence = defence;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (ReduceHitPoint={defence.ReduceHitPoint}). Replaced '{previous?.Name ?? "none"}'.");
+                        GameLogger.Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.DecreaseDamageTaken}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 default:

@@ -9,17 +9,17 @@ namespace Mandatory2DGameFramework.model.defence
 {
     public class DefenceItem:WorldObject
     {
-        public int ReduceHitPoint { get; set; }
+        public int DecreaseDamageTaken { get; set; }
 
         public DefenceItem()
         {
             Name = string.Empty;
-            ReduceHitPoint = 0;
+            DecreaseDamageTaken = 0;
         }
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(ReduceHitPoint)}={ReduceHitPoint.ToString()}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(DecreaseDamageTaken)}={DecreaseDamageTaken.ToString()}}}";
         }
     }
 }
