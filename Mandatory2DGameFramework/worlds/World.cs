@@ -26,6 +26,16 @@ namespace Mandatory2DGameFramework.worlds
             _creatures = new List<Creature>();
         }
 
+        public void AddWorldObject(WorldObject obj)
+        {
+            _worldObjects.Add(obj);
+        }
+
+        public void AddCreature(Creature creature)
+        {
+            _creatures.Add(creature);
+        }
+
         public override string ToString()
         {
             return $"{{{nameof(MaxX)}={MaxX.ToString()}, {nameof(MaxY)}={MaxY.ToString()}}}";
