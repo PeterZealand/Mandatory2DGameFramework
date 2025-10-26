@@ -1,6 +1,8 @@
 ﻿using Mandatory2DGameFramework.model.defence;
 using Mandatory2DGameFramework.Models.Attack;
 using Mandatory2DGameFramework.worlds;
+using Mandatory2DGameFramework.Patterns;
+using static Mandatory2DGameFramework.Patterns.GameLogger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
