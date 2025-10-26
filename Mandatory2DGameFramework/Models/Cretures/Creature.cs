@@ -13,6 +13,8 @@ namespace Mandatory2DGameFramework.model.Cretures
 {
     public class Creature
     {
+        private const int UnarmedDamage = 5;
+
         public string Name { get; set; }
         public int HitPoint { get; set; }
 
@@ -33,8 +35,8 @@ namespace Mandatory2DGameFramework.model.Cretures
 
         public int Hit()
         {
-            // return the damage this creature produces (0 when unarmed)
-            int damage = Attack?.Hit ?? 0;
+            // return the damage this creature produces (5 when unarmed)
+            int damage = Attack?.Hit ?? UnarmedDamage;
             GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)") }.");
             return damage;
         }
@@ -43,13 +45,13 @@ namespace Mandatory2DGameFramework.model.Cretures
         {
             // reduce incoming hit by defence if present, clamp to non-negative and apply to HitPoint
             int reduction = Defence?.DecreaseDamageTaken ?? 0;
-            int net = hit - reduction;
-            if (net < 0) net = 0;
+            int DamageRecieved = hit - reduction;
+            if (DamageRecieved < 0) DamageRecieved = 0;
 
-            HitPoint -= net;
+            HitPoint -= DamageRecieved;
             if (HitPoint < 0) HitPoint = 0;
 
-            GameLogger.Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, net {net}. Remaining HP: {HitPoint}.");
+            GameLogger.Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
         }
 
         public void Loot(WorldObject obj)
