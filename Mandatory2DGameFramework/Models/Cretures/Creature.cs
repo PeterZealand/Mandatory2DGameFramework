@@ -73,7 +73,7 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Attack;
                         Attack = attack;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Hit}, Range={attack.Range}). Replaced '{previous?.Name ?? "none"}'.");
+                        GameLogger.Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Hit}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 case DefenceItem defence:
