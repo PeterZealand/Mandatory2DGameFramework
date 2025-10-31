@@ -36,7 +36,7 @@ namespace Mandatory2DGameFramework.model.Cretures
         public int Hit()
         {
             // return the damage this creature produces (5 when unarmed)
-            int damage = Attack?.Hit ?? UnarmedDamage;
+            int damage = Attack?.Damage ?? UnarmedDamage;
             GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)") }.");
             return damage;
         }
@@ -44,7 +44,7 @@ namespace Mandatory2DGameFramework.model.Cretures
         public void ReceiveHit(int hit)
         {
             // reduce incoming hit by defence if present, clamp to non-negative and apply to HitPoint
-            int reduction = Defence?.DecreaseDamageTaken ?? 0;
+            int reduction = Defence?.Defense ?? 0;
             int DamageRecieved = hit - reduction;
             if (DamageRecieved < 0) DamageRecieved = 0;
 
