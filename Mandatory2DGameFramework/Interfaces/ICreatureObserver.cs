@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface ICreatureStrategy
+    public interface ICreatureObserver
     {
-        //TODO
-        void PerformAction();
+        void OnCreatureHit(string creatureName, int damage);
     }
 }
