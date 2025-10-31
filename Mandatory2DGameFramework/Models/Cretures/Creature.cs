@@ -75,7 +75,7 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Attack;
                         Attack = attack;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Hit}). Replaced '{previous?.Name ?? "none"}'.");
+                        GameLogger.Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Damage}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 case DefenceItem defence:
@@ -83,7 +83,7 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Defence;
                         Defence = defence;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.DecreaseDamageTaken}). Replaced '{previous?.Name ?? "none"}'.");
+                        GameLogger.Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.Defense}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 default:

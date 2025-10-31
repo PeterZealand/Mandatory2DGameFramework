@@ -1,4 +1,5 @@
-﻿using Mandatory2DGameFramework.worlds;
+﻿using Mandatory2DGameFramework.Interfaces;
+using Mandatory2DGameFramework.worlds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models.Attack
 {
-    public class AttackItem : WorldObject
+    public class AttackItem : IAttackItem
     {
         public string  Name { get; set; }
         public int Damage { get; set; }
