@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.worlds
 {
-    public class WorldObject
+    public abstract class WorldObject
     {
         public string Name { get; set; }
         public bool Lootable { get; set; }

@@ -8,5 +8,6 @@ namespace Mandatory2DGameFramework.Interfaces
 {
     public interface ICreatureStrategy
     {
+        void PerformAction();
     }
 }

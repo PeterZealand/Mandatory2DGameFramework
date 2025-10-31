@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.model.Cretures
 {
-    public class Creature
+    public class Creature : ICreatureStrategy
     {
         private const int UnarmedDamage = 5;
 
@@ -30,7 +31,6 @@ namespace Mandatory2DGameFramework.model.Cretures
 
             Attack = null;
             Defence = null;
-
         }
 
         public int Hit()
@@ -94,11 +94,17 @@ namespace Mandatory2DGameFramework.model.Cretures
                         break;
                     }
             }
+
         }
 
         public override string ToString()
         {
             return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(Defence)}={Defence}}}";
+        }
+
+        public void PerformAction()
+        {
+            throw new NotImplementedException();
         }
     }
 }
