@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.model.defence
 {
-    public class DefenceItem : IDefenceItem
+    public class DefenceItem : WorldObject, IDefenceItem
     {
         public String Name { get; set; }
         public int Defense { get; set; }

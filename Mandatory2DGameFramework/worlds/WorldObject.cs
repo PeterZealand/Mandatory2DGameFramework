@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.worlds
 {
+
+    //TODO ret på klassen da den overlapper med interfaces nu.
     public abstract class WorldObject
     {
         public string Name { get; set; }

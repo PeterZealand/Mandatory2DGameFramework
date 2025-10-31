@@ -10,5 +10,6 @@ namespace Mandatory2DGameFramework.Models.Defence
     {
         //TODO
         //Skal jeg have armor med så jeg kan bruge en composite class nu jeg kun kan have et defense item på af gangen?
+        //eller skal items kunne forbedres?
     }
 }
