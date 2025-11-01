@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Patterns
 {
-    public class GameLogger
+    public sealed class GameLogger
     {
         private static GameLogger instance = new GameLogger();
         public static GameLogger Instance

@@ -69,28 +69,30 @@ namespace Mandatory2DGameFramework.Models
             switch (obj)
             {
                 case AttackItem attack:
+                    if (Attack == null || attack.Damage > Attack.Damage)
                     {
-                        var previous = Attack;
+                        GameLogger.Instance.LogInfo($"{Name} equips new attack item '{attack.Name}' (Damage: {attack.Damage}).");
                         Attack = attack;
                         obj.Removeable = true;
-                        Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Damage}). Replaced '{previous?.Name ?? "none"}'.");
-                        break;
                     }
-                case DefenceItem defence:
+                    else
                     {
-                        var previous = Defence;
+                        GameLogger.Instance.LogInfo($"{Name} ignores weaker attack item '{attack.Name}' (Damage: {attack.Damage}).");
+                    }
+                    break;
+
+                case DefenceItem defence:
+                    if (Defence == null || defence.DefenseValue > Defence.DefenseValue)
+                    {
+                        GameLogger.Instance.LogInfo($"{Name} equips new defence item '{defence.Name}' (Value: {defence.DefenseValue}).");
                         Defence = defence;
                         obj.Removeable = true;
-                        Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.DefenseValue}). Replaced '{previous?.Name ?? "none"}'.");
-                        break;
                     }
-                default:
+                    else
                     {
-                        // generic lootable object
-                        obj.Removeable = true;
-                        Instance.LogInfo($"{Name} looted object '{obj.Name}'.");
-                        break;
+                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defence item '{defence.Name}' (Value: {defence.DefenseValue}).");
                     }
+                    break;
             }
 
         }
