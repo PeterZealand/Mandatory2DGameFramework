@@ -9,6 +9,7 @@ namespace Mandatory2DGameFramework.Interfaces
     public interface IDefenceItem
     {
         int DefenseValue { get; }
+
         int ReduceDamage(int incoming);
     }
 }

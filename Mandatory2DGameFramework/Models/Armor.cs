@@ -18,5 +18,10 @@ namespace Mandatory2DGameFramework.Models
             Name = string.Empty;
             DefenseValue = 0;
         }
+
+        public int ReduceDamage(int incoming)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

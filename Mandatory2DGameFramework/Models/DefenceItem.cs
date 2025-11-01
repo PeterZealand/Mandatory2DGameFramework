@@ -22,5 +22,10 @@ namespace Mandatory2DGameFramework.Models
         {
             return $"{{{nameof(Name)}={Name}, {nameof(DefenseValue)}={DefenseValue.ToString()}}}";
         }
+
+        public int ReduceDamage(int incoming)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
