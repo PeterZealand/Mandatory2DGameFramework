@@ -1,6 +1,4 @@
-﻿using Mandatory2DGameFramework.model.Cretures;
-using Mandatory2DGameFramework.model.defence;
-using Mandatory2DGameFramework.Models.Attack;
+﻿using Mandatory2DGameFramework.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

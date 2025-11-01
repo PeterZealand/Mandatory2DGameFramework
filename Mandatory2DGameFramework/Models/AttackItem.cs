@@ -6,22 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mandatory2DGameFramework.model.defence
+namespace Mandatory2DGameFramework.Models
 {
-    public class DefenceItem : WorldObject, IDefenceItem
+    public class AttackItem : WorldObject,  IAttackItem
     {
-        public String Name { get; set; }
-        public int Defense { get; set; }
+        public int Damage { get; set; }
 
-        public DefenceItem()
+        public AttackItem()
         {
             Name = string.Empty;
-            Defense = 0;
+            Damage = 0;
         }
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(Defense)}={Defense.ToString()}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(Damage)}={Damage.ToString()}}}";
         }
     }
 }

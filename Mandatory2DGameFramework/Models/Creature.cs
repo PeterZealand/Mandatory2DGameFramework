@@ -1,6 +1,4 @@
-﻿using Mandatory2DGameFramework.model.defence;
-using Mandatory2DGameFramework.Models.Attack;
-using Mandatory2DGameFramework.worlds;
+﻿using Mandatory2DGameFramework.worlds;
 using Mandatory2DGameFramework.Patterns;
 using static Mandatory2DGameFramework.Patterns.GameLogger;
 using System;
@@ -10,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Mandatory2DGameFramework.Interfaces;
 
-namespace Mandatory2DGameFramework.model.Cretures
+namespace Mandatory2DGameFramework.Models
 {
     public class Creature : ICreatureStrategy
     {
@@ -37,7 +35,7 @@ namespace Mandatory2DGameFramework.model.Cretures
         {
             // return the damage this creature produces (5 when unarmed)
             int damage = Attack?.Damage ?? UnarmedDamage;
-            GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)") }.");
+            Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)") }.");
             return damage;
         }
 
@@ -51,20 +49,20 @@ namespace Mandatory2DGameFramework.model.Cretures
             HitPoint -= DamageRecieved;
             if (HitPoint < 0) HitPoint = 0;
 
-            GameLogger.Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
+            Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
         }
 
         public void Loot(WorldObject obj)
         {
             if (obj == null)
             {
-                GameLogger.Instance.LogWarning($"{Name} tried to loot a null object.");
+                Instance.LogWarning($"{Name} tried to loot a null object.");
                 return;
             }
 
             if (!obj.Lootable)
             {
-                GameLogger.Instance.LogWarning($"{Name} attempted to loot '{obj.Name}', but it is not lootable.");
+                Instance.LogWarning($"{Name} attempted to loot '{obj.Name}', but it is not lootable.");
                 return;
             }
 
@@ -75,7 +73,7 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Attack;
                         Attack = attack;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Damage}). Replaced '{previous?.Name ?? "none"}'.");
+                        Instance.LogInfo($"{Name} looted attack item '{attack.Name}' (Hit={attack.Damage}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 case DefenceItem defence:
@@ -83,14 +81,14 @@ namespace Mandatory2DGameFramework.model.Cretures
                         var previous = Defence;
                         Defence = defence;
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.Defense}). Replaced '{previous?.Name ?? "none"}'.");
+                        Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.Defense}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 default:
                     {
                         // generic lootable object
                         obj.Removeable = true;
-                        GameLogger.Instance.LogInfo($"{Name} looted object '{obj.Name}'.");
+                        Instance.LogInfo($"{Name} looted object '{obj.Name}'.");
                         break;
                     }
             }

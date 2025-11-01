@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mandatory2DGameFramework.Models.Defence
+namespace Mandatory2DGameFramework.Patterns
 {
     internal interface CompositeDefence
     {
