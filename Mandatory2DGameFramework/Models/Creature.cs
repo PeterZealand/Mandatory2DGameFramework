@@ -10,11 +10,10 @@ using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class Creature : ICreatureStrategy
+    public class Creature : WorldObject, ICreatureStrategy
     {
         private const int UnarmedDamage = 5;
 
-        public string Name { get; set; }
         public int HitPoint { get; set; }
 
 
