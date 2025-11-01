@@ -1,4 +1,4 @@
-﻿using Mandatory2DGameFramework.worlds;
+﻿using Mandatory2DGameFramework.Worlds;
 using Mandatory2DGameFramework.Patterns;
 using static Mandatory2DGameFramework.Patterns.GameLogger;
 using System;
@@ -73,7 +73,7 @@ namespace Mandatory2DGameFramework.Models
                     {
                         GameLogger.Instance.LogInfo($"{Name} equips new attack item '{attack.Name}' (Damage: {attack.Damage}).");
                         Attack = attack;
-                        obj.Removeable = true;
+                        obj.Removable = true;
                     }
                     else
                     {
@@ -86,7 +86,7 @@ namespace Mandatory2DGameFramework.Models
                     {
                         GameLogger.Instance.LogInfo($"{Name} equips new defence item '{defence.Name}' (Value: {defence.DefenseValue}).");
                         Defence = defence;
-                        obj.Removeable = true;
+                        obj.Removable = true;
                     }
                     else
                     {

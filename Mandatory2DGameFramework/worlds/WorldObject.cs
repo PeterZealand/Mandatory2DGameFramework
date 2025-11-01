@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mandatory2DGameFramework.worlds
+namespace Mandatory2DGameFramework.Worlds
 {
 
     //TODO ret på klassen da den overlapper med interfaces nu.
@@ -12,18 +12,18 @@ namespace Mandatory2DGameFramework.worlds
     {
         public string Name { get; set; }
         public bool Lootable { get; set; }
-        public bool Removeable { get; set; }
+        public bool Removable { get; set; }
 
         public WorldObject()
         {
             Name = string.Empty;
             Lootable = false;
-            Removeable = false;
+            Removable = false;
         }
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(Lootable)}={Lootable.ToString()}, {nameof(Removeable)}={Removeable.ToString()}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(Lootable)}={Lootable.ToString()}, {nameof(Removable)}={Removable.ToString()}}}";
         }
     }
 }

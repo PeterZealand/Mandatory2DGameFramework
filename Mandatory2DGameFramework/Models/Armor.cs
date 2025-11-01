@@ -1,6 +1,6 @@
 ﻿using Mandatory2DGameFramework.Interfaces;
 using Mandatory2DGameFramework.Models;
-using Mandatory2DGameFramework.worlds;
+using Mandatory2DGameFramework.Worlds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
