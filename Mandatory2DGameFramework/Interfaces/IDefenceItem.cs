@@ -8,6 +8,6 @@ namespace Mandatory2DGameFramework.Interfaces
 {
     public interface IDefenceItem
     {
-        int Defense { get; }
+        int DefenseValue { get; }
     }
 }

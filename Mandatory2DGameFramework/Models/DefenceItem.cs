@@ -10,17 +10,17 @@ namespace Mandatory2DGameFramework.Models
 {
     public class DefenceItem : WorldObject, IDefenceItem
     {
-        public int Defense { get; set; }
+        public int DefenseValue { get; set; }
 
         public DefenceItem()
         {
             Name = string.Empty;
-            Defense = 0;
+            DefenseValue = 0;
         }
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(Defense)}={Defense.ToString()}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(DefenseValue)}={DefenseValue.ToString()}}}";
         }
     }
 }

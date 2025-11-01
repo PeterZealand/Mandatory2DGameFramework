@@ -42,7 +42,7 @@ namespace Mandatory2DGameFramework.Models
         public void ReceiveHit(int hit)
         {
             // reduce incoming hit by defence if present, clamp to non-negative and apply to HitPoint
-            int reduction = Defence?.Defense ?? 0;
+            int reduction = Defence?.DefenseValue ?? 0;
             int DamageRecieved = hit - reduction;
             if (DamageRecieved < 0) DamageRecieved = 0;
 
@@ -81,7 +81,7 @@ namespace Mandatory2DGameFramework.Models
                         var previous = Defence;
                         Defence = defence;
                         obj.Removeable = true;
-                        Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.Defense}). Replaced '{previous?.Name ?? "none"}'.");
+                        Instance.LogInfo($"{Name} looted defence item '{defence.Name}' (DecreaseDamageTaken={defence.DefenseValue}). Replaced '{previous?.Name ?? "none"}'.");
                         break;
                     }
                 default:
