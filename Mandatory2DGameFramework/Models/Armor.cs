@@ -1,4 +1,5 @@
 ﻿using Mandatory2DGameFramework.Interfaces;
+using Mandatory2DGameFramework.Models;
 using Mandatory2DGameFramework.worlds;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,14 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class DefenceItem : WorldObject, IDefenceItem
+    public class Armor : WorldObject, IDefenceItem
     {
-        public int Defense { get; set; }
+        public int DefenseValue { get; set; }
 
-        public DefenceItem()
+        public Armor()
         {
             Name = string.Empty;
-            Defense = 0;
-        }
-
-        public override string ToString()
-        {
-            return $"{{{nameof(Name)}={Name}, {nameof(Defense)}={Defense.ToString()}}}";
+            DefenseValue = 0;
         }
     }
 }

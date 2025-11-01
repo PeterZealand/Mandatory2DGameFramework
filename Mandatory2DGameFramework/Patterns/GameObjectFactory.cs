@@ -17,5 +17,8 @@ namespace Mandatory2DGameFramework.Patterns
 
         public static DefenceItem CreateDefenceItem(string name, int defence)
             => new() { Name = name, Defense = defence };
+
+        public static Armor CreateArmour(string name, int defence)
+            => new() { Name = name, DefenseValue = defence };
     }
 }
