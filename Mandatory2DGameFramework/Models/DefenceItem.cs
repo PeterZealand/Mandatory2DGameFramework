@@ -25,7 +25,9 @@ namespace Mandatory2DGameFramework.Models
 
         public int ReduceDamage(int incoming)
         {
-            throw new NotImplementedException();
+            int reduce = incoming - DefenseValue;
+            if (reduce < 0) reduce = 0;
+            return reduce;
         }
     }
 }

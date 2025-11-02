@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
+    //TODO Armor og Defence er næsten det samme, skal jeg have begge? skal armor kunnne mere? resists?
     public class Armor : WorldObject, IDefenceItem
     {
         public int DefenseValue { get; set; }
@@ -21,7 +22,9 @@ namespace Mandatory2DGameFramework.Models
 
         public int ReduceDamage(int incoming)
         {
-            throw new NotImplementedException();
+            int reduce = incoming - DefenseValue;
+            if (reduce < 0) reduce = 0;
+            return reduce;
         }
     }
 }
