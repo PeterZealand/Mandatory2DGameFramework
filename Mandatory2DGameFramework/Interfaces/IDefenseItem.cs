@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface IDefenceItem
+    public interface IDefenseItem
     {
         int DefenseValue { get; }
 

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class DefenceItem : WorldObject, IDefenceItem
+    public class DefenseItem : WorldObject, IDefenseItem
     {
         public int DefenseValue { get; set; }
 
-        public DefenceItem()
+        public DefenseItem()
         {
             Name = string.Empty;
             DefenseValue = 0;

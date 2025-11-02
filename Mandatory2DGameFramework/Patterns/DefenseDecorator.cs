@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Patterns
 {
-    public abstract class DefenceDecorator : IDefenceItem
+    public abstract class DefenseDecorator : WorldObject, IDefenseItem
     {
-        protected readonly IDefenceItem Enchanted;
-        public int DefenseValue => Enchanted.DefenseValue;
+        protected readonly IDefenseItem Enchanted;
+        public virtual int DefenseValue => Enchanted.DefenseValue;
 
-        protected DefenceDecorator(IDefenceItem enchanted)
+        protected DefenseDecorator(IDefenseItem enchanted)
         {
             Enchanted = enchanted;
-            //TODO The decorator itself should carry over the base Name - doesnt work atm
             if (enchanted is WorldObject obj)
                 Name = obj.Name;
         }

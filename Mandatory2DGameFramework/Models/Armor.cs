@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    //TODO Armor og Defence er næsten det samme, skal jeg have begge? skal armor kunnne mere? resists?
-    public class Armor : WorldObject, IDefenceItem
+    //TODO Armor og defense er næsten det samme, skal jeg have begge? skal armor kunnne mere? resists?
+    public class Armor : WorldObject, IDefenseItem
     {
         public int DefenseValue { get; set; }
 

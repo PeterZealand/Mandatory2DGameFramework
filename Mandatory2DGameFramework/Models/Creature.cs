@@ -14,10 +14,10 @@ namespace Mandatory2DGameFramework.Models
     {
         private const int UnarmedDamage = 5;
         public int HitPoint { get; set; }
-        // Todo consider how many attack / defence weapons are allowed
+        // Todo consider how many attack / defense weapons are allowed
         //decided on 1 of each for simplicity
         public AttackItem?   Attack { get; set; }
-        public DefenceItem?  Defence { get; set; }
+        public DefenseItem?  defense { get; set; }
 
         private readonly List<ICreatureObserver> _observer = new();
 
@@ -51,7 +51,7 @@ namespace Mandatory2DGameFramework.Models
             HitPoint = 100;
 
             Attack = null;
-            Defence = null;
+            defense = null;
         }
 
         public int Hit()
@@ -64,8 +64,8 @@ namespace Mandatory2DGameFramework.Models
 
         public void ReceiveHit(int hit)
         {
-            // reduce incoming hit by defence if present, clamp to non-negative and apply to HitPoint
-            int reduction = Defence?.DefenseValue ?? 0;
+            // reduce incoming hit by defense if present, clamp to non-negative and apply to HitPoint
+            int reduction = defense?.DefenseValue ?? 0;
             int DamageRecieved = hit - reduction;
             if (DamageRecieved < 0) DamageRecieved = 0;
 
@@ -104,16 +104,16 @@ namespace Mandatory2DGameFramework.Models
                     }
                     break;
 
-                case DefenceItem defence:
-                    if (Defence == null || defence.DefenseValue > Defence.DefenseValue)
+                case DefenseItem defense:
+                    if (defense == null || defense.DefenseValue > defense.DefenseValue)
                     {
-                        GameLogger.Instance.LogInfo($"{Name} equips new defence item '{defence.Name}' (Value: {defence.DefenseValue}).");
-                        Defence = defence;
+                        GameLogger.Instance.LogInfo($"{Name} equips new defense item '{defense.Name}' (Value: {defense.DefenseValue}).");
+                        defense = defense;
                         obj.Removable = true;
                     }
                     else
                     {
-                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defence item '{defence.Name}' (Value: {defence.DefenseValue}).");
+                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{defense.Name}' (Value: {defense.DefenseValue}).");
                     }
                     break;
             }
@@ -122,7 +122,7 @@ namespace Mandatory2DGameFramework.Models
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(Defence)}={Defence}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(defense)}={defense}}}";
         }
 
         public void PerformAction()
