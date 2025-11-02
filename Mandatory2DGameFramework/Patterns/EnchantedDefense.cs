@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Mandatory2DGameFramework.Patterns
 {
     /// <summary>
-    /// An enchanted defensive item that magically boosts another item's defense value.
+    /// An enchanted defensive item that boosts another item's defense value.
     /// </summary>
     public class EnchantedDefense : DefenseDecorator
     {

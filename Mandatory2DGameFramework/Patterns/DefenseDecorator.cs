@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Patterns
 {
+    /// <summary>
+    /// Abstract decorator for enhancing defence items dynamically.
+    /// </summary>
     public abstract class DefenseDecorator : WorldObject, IDefenseItem
     {
         protected readonly IDefenseItem Enchanted;
