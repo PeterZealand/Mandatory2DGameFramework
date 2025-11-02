@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    internal interface IAttackItem
+    public interface IAttackItem
     {
         int Damage { get; }
     }

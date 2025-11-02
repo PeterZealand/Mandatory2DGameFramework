@@ -10,6 +10,9 @@ using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.Models
 {
+    /// <summary>
+    /// Base creature that can attack, receive hits, loot items and notify observers.
+    /// </summary>
     public class Creature : WorldObject, ICreatureStrategy
     {
         private const int UnarmedDamage = 5;
@@ -17,11 +20,11 @@ namespace Mandatory2DGameFramework.Models
         // Todo consider how many attack / defense weapons are allowed
         //decided on 1 of each for simplicity
         public AttackItem?   Attack { get; set; }
-        public DefenseItem?  defense { get; set; }
+        public IDefenseItem?  Defense { get; set; }
 
         private readonly List<ICreatureObserver> _observer = new();
 
-        public void RegfisterObserver(ICreatureObserver observer)
+        public void RegisterObserver(ICreatureObserver observer)
         {
             if (!_observer.Contains(observer))
             {
@@ -51,21 +54,21 @@ namespace Mandatory2DGameFramework.Models
             HitPoint = 100;
 
             Attack = null;
-            defense = null;
+            Defense = null;
         }
 
         public int Hit()
         {
             // return the damage this creature produces (5 when unarmed)
             int damage = Attack?.Damage ?? UnarmedDamage;
-            Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)") }.");
+            GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)")}.");
             return damage;
         }
 
         public void ReceiveHit(int hit)
         {
             // reduce incoming hit by defense if present, clamp to non-negative and apply to HitPoint
-            int reduction = defense?.DefenseValue ?? 0;
+            int reduction = Defense?.DefenseValue ?? 0;
             int DamageRecieved = hit - reduction;
             if (DamageRecieved < 0) DamageRecieved = 0;
 
@@ -73,6 +76,7 @@ namespace Mandatory2DGameFramework.Models
             if (HitPoint < 0) HitPoint = 0;
 
             Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
+            NotifyObservers(DamageRecieved);
         }
 
         public void Loot(WorldObject obj)
@@ -104,16 +108,16 @@ namespace Mandatory2DGameFramework.Models
                     }
                     break;
 
-                case DefenseItem defense:
-                    if (defense == null || defense.DefenseValue > defense.DefenseValue)
+                case IDefenseItem newDefence:
+                    if (Defense == null || newDefence.DefenseValue > Defense.DefenseValue)
                     {
-                        GameLogger.Instance.LogInfo($"{Name} equips new defense item '{defense.Name}' (Value: {defense.DefenseValue}).");
-                        defense = defense;
+                        GameLogger.Instance.LogInfo($"{Name} equips new defense item '{obj.Name}' (Value: {newDefence.DefenseValue}).");
+                        Defense = newDefence as DefenseItem; // or store as IDefenseItem – see below
                         obj.Removable = true;
                     }
                     else
                     {
-                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{defense.Name}' (Value: {defense.DefenseValue}).");
+                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{obj.Name}' (Value: {newDefence.DefenseValue}).");
                     }
                     break;
             }
@@ -122,12 +126,13 @@ namespace Mandatory2DGameFramework.Models
 
         public override string ToString()
         {
-            return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(defense)}={defense}}}";
+            return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(Defense)}={Defense}}}";
         }
 
         public void PerformAction()
         {
-            throw new NotImplementedException();
+            // strategy demo
+            GameLogger.Instance.LogInfo($"{Name} performs default creature action.");
         }
     }
 }
