@@ -13,13 +13,37 @@ namespace Mandatory2DGameFramework.Models
     public class Creature : WorldObject, ICreatureStrategy
     {
         private const int UnarmedDamage = 5;
-
         public int HitPoint { get; set; }
-
-
         // Todo consider how many attack / defence weapons are allowed
+        //decided on 1 of each for simplicity
         public AttackItem?   Attack { get; set; }
         public DefenceItem?  Defence { get; set; }
+
+        private readonly List<ICreatureObserver> _observer = new();
+
+        public void RegfisterObserver(ICreatureObserver observer)
+        {
+            if (!_observer.Contains(observer))
+            {
+                _observer.Add(observer);
+            }
+        }
+
+        public void RemoveObserver(ICreatureObserver observer)
+        {
+            if (_observer.Contains(observer))
+            {
+                _observer.Remove(observer);
+            }
+        }
+
+        public void NotifyObservers(int damage)
+        {
+            foreach (var observer in _observer)
+            {
+                observer.OnCreatureHit(Name, damage);
+            }
+        }
 
         public Creature()
         {
