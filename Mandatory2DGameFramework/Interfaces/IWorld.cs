@@ -1,4 +1,5 @@
 ﻿using Mandatory2DGameFramework.Models;
+using Mandatory2DGameFramework.Patterns;
 using Mandatory2DGameFramework.Worlds;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,10 @@ namespace Mandatory2DGameFramework.Interfaces
 {
     public interface IWorld
     {
-        int MaxX { get; set; }
-        int MaxY { get; set; }
-        public void AddWorldObject(WorldObject obj);
-        public void AddCreature(Creature creature); 
+        public int MaxX { get; set; }
+        public int MaxY { get; set; }
+        public bool IsBlocked(int x, int y);
+        public void AddObject(WorldObject obj);
+        public void RemoveObject(WorldObject obj);
     }
 }
