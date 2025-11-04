@@ -8,7 +8,7 @@ namespace Mandatory2DGameFramework.Interfaces
 {
     public interface ICreature : IWorldObject
     {
-        int UnarmedDamage { get; set; }
+        const int UnarmedDamage = 5;
         public int HitPoint { get; set; }
     }
 }

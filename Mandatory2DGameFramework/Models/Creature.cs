@@ -16,10 +16,10 @@ namespace Mandatory2DGameFramework.Models
     /// </summary>
     public abstract class Creature : IWorldObject, ICreature
     {
-        private const int UnarmedDamage = 5;
         public int HitPoint { get; set; }
         // Todo consider how many attack / defense weapons are allowed
         //decided on 1 of each for simplicity
+        //TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som hit osv?
         public IAttackItem?   Attack { get; set; }
         public IDefenseItem?  Defense { get; set; }
         public string Name { get; set; }
@@ -60,15 +60,15 @@ namespace Mandatory2DGameFramework.Models
             Defense = null;
         }
 
-        public int Hit()
+        public virtual int Hit()
         {
             // return the damage this creature produces (5 when unarmed)
-            int damage = Attack?.Damage ?? UnarmedDamage;
+            int damage = Attack?.Damage ?? ICreature.UnarmedDamage;
             GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)")}.");
             return damage;
         }
 
-        public void ReceiveHit(int hit)
+        public virtual void ReceiveHit(int hit)
         {
             // reduce incoming hit by defense if present, clamp to non-negative and apply to HitPoint
             int reduction = Defense?.DefenseValue ?? 0;
@@ -81,7 +81,7 @@ namespace Mandatory2DGameFramework.Models
             Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
             NotifyObservers(DamageRecieved);
         }
-
+        //TODO strategy pattern via interface eller action?
         public void Loot(WorldObject obj)
         {
             if (obj == null)

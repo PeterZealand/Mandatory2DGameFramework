@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface IDefenseItem : IWorldObject
+    public interface IPossitionable
     {
-        int DefenseValue { get;}
-
-        int ReduceDamage(int incoming);
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

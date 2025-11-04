@@ -25,6 +25,7 @@ namespace Mandatory2DGameFramework.Patterns
 
         public void Add(IDefenseItem defense) => _defenses.Add(defense);
 
+        //Kan man bruge .Sum her?
         public int DefenseValue
         {
             get
