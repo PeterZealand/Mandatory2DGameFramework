@@ -14,15 +14,17 @@ namespace Mandatory2DGameFramework.Models
     /// Base creature that can attack, receive hits, loot items and notify observers.
     /// creature følger ikke SOLID den kan alt for meget og skal være template
     /// </summary>
-    public class Creature : WorldObject, ICreatureStrategy
+    public abstract class Creature : IWorldObject, ICreature
     {
         private const int UnarmedDamage = 5;
         public int HitPoint { get; set; }
         // Todo consider how many attack / defense weapons are allowed
         //decided on 1 of each for simplicity
-        public AttackItem?   Attack { get; set; }
+        public IAttackItem?   Attack { get; set; }
         public IDefenseItem?  Defense { get; set; }
-
+        public string Name { get; set; }
+        public bool Lootable { get; set; }
+        public bool Removable { get; set; }
         private readonly List<ICreatureObserver> _observer = new();
 
         public void RegisterObserver(ICreatureObserver observer)
@@ -96,7 +98,7 @@ namespace Mandatory2DGameFramework.Models
 
             switch (obj)
             {
-                case AttackItem attack:
+                case IAttackItem attack:
                     if (Attack == null || attack.Damage > Attack.Damage)
                     {
                         GameLogger.Instance.LogInfo($"{Name} equips new attack item '{attack.Name}' (Damage: {attack.Damage}).");
@@ -128,12 +130,6 @@ namespace Mandatory2DGameFramework.Models
         public override string ToString()
         {
             return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(Defense)}={Defense}}}";
-        }
-
-        public void PerformAction()
-        {
-            // strategy demo
-            GameLogger.Instance.LogInfo($"{Name} performs default creature action.");
         }
     }
 }

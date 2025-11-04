@@ -9,6 +9,7 @@ namespace Mandatory2DGameFramework.Interfaces
     public interface ICreatureStrategy
     {
         //TODO
+        //kan eventuelt være at hit fungerer anderledes når du er såret?
         void PerformAction();
     }
 }

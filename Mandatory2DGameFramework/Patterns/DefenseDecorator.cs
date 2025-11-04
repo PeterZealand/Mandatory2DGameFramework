@@ -11,11 +11,14 @@ namespace Mandatory2DGameFramework.Patterns
     /// <summary>
     /// Abstract decorator for enhancing defence items dynamically.
     /// </summary>
-    public abstract class DefenseDecorator : WorldObject, IDefenseItem
+    public abstract class DefenseDecorator : IDefenseItem
     {
         protected readonly IDefenseItem Enchanted;
         public virtual int DefenseValue => Enchanted.DefenseValue;
 
+        public string Name { get; set; }
+        public bool Lootable { get; set; }
+        public bool Removable { get; set; }
         protected DefenseDecorator(IDefenseItem enchanted)
         {
             Enchanted = enchanted;

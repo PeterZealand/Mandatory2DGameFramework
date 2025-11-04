@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface IAttackItem :IWorldObject
+    public interface ICreature : IWorldObject
     {
-        int Damage { get; set; }
+        int UnarmedDamage { get; set; }
+        public int HitPoint { get; set; }
     }
 }

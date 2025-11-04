@@ -19,6 +19,8 @@ namespace Mandatory2DGameFramework.Patterns
     public class CompositeDefense : IDefenseItem
     {
         public string Name { get; set; } = "Composite defense";
+        public bool Lootable { get; set; }
+        public bool Removable { get; set; }
         private readonly List<IDefenseItem> _defenses = new();
 
         public void Add(IDefenseItem defense) => _defenses.Add(defense);
@@ -33,7 +35,6 @@ namespace Mandatory2DGameFramework.Patterns
                 return total;
             }
         }
-
         public int ReduceDamage(int incoming)
         {
             int reduced = incoming;

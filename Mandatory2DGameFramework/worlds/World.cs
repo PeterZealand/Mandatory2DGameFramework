@@ -1,4 +1,5 @@
 ﻿using Mandatory2DGameFramework.Models;
+using Mandatory2DGameFramework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Worlds
 {
-    public class World
+    public class World :IWorld
     {
         public int MaxX { get; set; }
         public int MaxY { get; set; }
-
-
         // world objects
         private List<WorldObject> _worldObjects;
         // world creatures

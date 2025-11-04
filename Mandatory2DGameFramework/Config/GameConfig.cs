@@ -5,6 +5,8 @@ namespace Mandatory2DGameFramework.Config
 {
     public sealed class GameConfig
     {
+        //TODO
+        //kunne eventuelt indføres via en state machine? easy 120hp, medium 100 hp , hard 80 hp?
         public enum DifficultyLevel
         {
             Easy,

@@ -9,6 +9,13 @@ namespace Mandatory2DGameFramework.Worlds
 {
 
     //TODO ret på klassen da den overlapper med interfaces nu.
+   /// <summary>
+   /// Represents an abstract base class for objects in the game world, providing common properties and behavior.
+   /// </summary>
+   /// <remarks>The <see cref="WorldObject"/> class serves as a foundation for all objects that exist within
+   /// the game world. It includes properties such as <see cref="Name"/>, <see cref="Lootable"/>, and <see
+   /// cref="Removable"/> to define the object's characteristics. Equality and comparison operations are based on the
+   /// <see cref="Name"/> property, allowing objects with the same name to be considered equal.</remarks>
     public abstract class WorldObject : IWorldObject
     {
         public string Name { get; set; }

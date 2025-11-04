@@ -11,14 +11,17 @@ namespace Mandatory2DGameFramework.Models
     public class AttackItem : IWorldObject,  IAttackItem
     {
         public int Damage { get; set; }
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Lootable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Removable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Name { get; set; }
+        public bool Lootable { get; set; }
+        public bool Removable { get; set; }
 
         public AttackItem()
         {
             Name = string.Empty;
             Damage = 0;
+            Lootable = true;
+            Removable = true;
+
         }
 
         public override string ToString()
