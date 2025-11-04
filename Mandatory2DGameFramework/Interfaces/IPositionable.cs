@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface IPossitionable
+    public interface IPositionable
     {
         public int X { get; set; }
         public int Y { get; set; }

@@ -7,10 +7,24 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    internal class Wall : IWorldObject
+    internal class Wall : IWorldObject, IPositionable
     {
-        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Lootable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool Removable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string Name { get; set; }
+        //se på at lave wall til kun get da den ikke skal være setable men altid være false
+        public bool Lootable { get; set; }
+        public bool Removable { get; set; }
+
+        public Wall(int x, int y)
+        {
+            Name = "Wall";
+            Lootable = false;
+            Removable = false;
+            X = x;
+            Y = y;
+        }
+
+        public override string ToString() => $"Wall at ({X}, {Y})";
     }
 }
