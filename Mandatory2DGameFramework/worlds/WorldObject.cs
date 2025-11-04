@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.Worlds
 {
 
     //TODO ret på klassen da den overlapper med interfaces nu.
-    public abstract class WorldObject
+    public abstract class WorldObject : IWorldObject
     {
         public string Name { get; set; }
         public bool Lootable { get; set; }

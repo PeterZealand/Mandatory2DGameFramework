@@ -12,6 +12,7 @@ namespace Mandatory2DGameFramework.Models
 {
     /// <summary>
     /// Base creature that can attack, receive hits, loot items and notify observers.
+    /// creature følger ikke SOLID den kan alt for meget og skal være template
     /// </summary>
     public class Creature : WorldObject, ICreatureStrategy
     {

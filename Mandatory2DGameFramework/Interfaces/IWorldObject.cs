@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    public interface IAttackItem :IWorldObject
+    public interface IWorldObject
     {
-        int Damage { get; }
+        string Name { get; set; }
+        bool Lootable { get; set; }
+        bool Removable { get; set; }
     }
 }

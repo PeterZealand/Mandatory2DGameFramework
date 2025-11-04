@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class AttackItem : WorldObject,  IAttackItem
+    public class AttackItem : IWorldObject,  IAttackItem
     {
         public int Damage { get; set; }
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool Lootable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool Removable { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public AttackItem()
         {
