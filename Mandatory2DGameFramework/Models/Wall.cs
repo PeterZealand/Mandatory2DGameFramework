@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
+    /// <summary>
+    /// Represents an immovable, non-lootable barrier that blocks creature movement.
+    /// </summary>
     internal class Wall : IWorldObject, IPositionable
     {
         public int X { get; set; }

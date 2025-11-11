@@ -14,7 +14,7 @@ namespace Mandatory2DGameFramework.Models
     /// Base creature that can attack, receive hits, loot items and notify observers.
     /// creature følger ikke SOLID den kan alt for meget og skal være template
     /// </summary>
-    public abstract class Creature : IWorldObject, ICreature
+    public abstract class Creature : IWorldObject, ICreature, IMove
     {
         public int HitPoint { get; set; }
         // Todo consider how many attack / defense weapons are allowed
@@ -25,6 +25,9 @@ namespace Mandatory2DGameFramework.Models
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
+        public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         private readonly List<ICreatureObserver> _observer = new();
 
         public void RegisterObserver(ICreatureObserver observer)
@@ -80,6 +83,30 @@ namespace Mandatory2DGameFramework.Models
 
             Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
             NotifyObservers(DamageRecieved);
+        }
+
+        public void Move(int dx, int dy, World world)
+        {
+            int newX = X + dx;
+            int newY = Y + dy;
+
+            // Stay within bounds
+            if (newX < 0 || newY < 0 || newX >= world.MaxX || newY >= world.MaxY)
+            {
+                GameLogger.Instance.LogWarning($"{Name} cannot move outside the world bounds!");
+                return;
+            }
+
+            // Check for obstacles
+            if (world.IsBlocked(newX, newY))
+            {
+                GameLogger.Instance.LogWarning($"{Name} cannot move to ({newX}, {newY}) — blocked by wall!");
+                return;
+            }
+
+            X = newX;
+            Y = newY;
+            GameLogger.Instance.LogInfo($"{Name} moved to ({X}, {Y}).");
         }
         //TODO strategy pattern via interface eller action?
         public void Loot(WorldObject obj)
