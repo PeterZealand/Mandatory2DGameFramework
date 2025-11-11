@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Interfaces
 {
     //TODO
-    public interface INotMovable
+    public interface IImmovable
     {
     }
 }

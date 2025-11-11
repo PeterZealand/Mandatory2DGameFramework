@@ -10,20 +10,14 @@ namespace Mandatory2DGameFramework.Models
     /// <summary>
     /// Represents an immovable, non-lootable barrier that blocks creature movement.
     /// </summary>
-    internal class Wall : IWorldObject, IPositionable
+    internal class Wall : ImmovableObject, IWorldObject, IPositionable
     {
         public int X { get; set; }
         public int Y { get; set; }
         public string Name { get; set; }
-        //se på at lave wall til kun get da den ikke skal være setable men altid være false
-        public bool Lootable { get; set; }
-        public bool Removable { get; set; }
-
         public Wall(int x, int y)
         {
             Name = "Wall";
-            Lootable = false;
-            Removable = false;
             X = x;
             Y = y;
         }
