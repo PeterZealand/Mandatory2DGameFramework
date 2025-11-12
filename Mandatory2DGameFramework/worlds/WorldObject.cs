@@ -32,6 +32,7 @@ namespace Mandatory2DGameFramework.Worlds
         // operator overload så man kan tjekke fx om Steel Sword == Steel Sword - tjekker på navn ikke objeckt i hukommelsen
         // ikke sikker på det er denne metode jeg vil overload, giver mening men er lidt kompliceret
         //tjekker nu game identity ikke objekt referance
+        //TODO giver nu problemer med fx Wall, der skal kunne være flere ens objekter i verden af, måske adde andre faktorer som x + y ?
         public static bool operator ==(WorldObject? a, WorldObject? b)
         {
             if (ReferenceEquals(a, b)) return true;
