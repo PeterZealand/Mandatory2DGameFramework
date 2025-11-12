@@ -12,9 +12,6 @@ namespace Mandatory2DGameFramework.Interfaces
     /// </summary>
     public interface IMove
     {
-        int X { get; set; }
-        int Y { get; set; }
-
         /// <summary>
         /// Moves the object by the given delta values (dx, dy).
         /// </summary>

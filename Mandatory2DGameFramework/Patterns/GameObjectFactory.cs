@@ -19,5 +19,7 @@ namespace Mandatory2DGameFramework.Patterns
         public abstract IAttackItem CreateAttackItem();
 
         public abstract IDefenseItem CreateDefenseItem();
+
+        public abstract IImmovable CreateImmovableWorldObject();
     }
 }

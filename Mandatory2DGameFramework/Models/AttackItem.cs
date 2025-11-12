@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class AttackItem : IWorldObject,  IAttackItem
+    public class AttackItem : IWorldObject,  IAttackItem, IPositionable
     {
         public int Damage { get; set; }
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public AttackItem()
         {

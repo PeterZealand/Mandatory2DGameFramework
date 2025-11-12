@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Models
 {
     //TODO Armor og defense er næsten det samme, skal jeg have begge? skal armor kunnne mere? resists?
-    public class Armor : IWorldObject, IDefenseItem
+    public class Armor : IWorldObject, IDefenseItem, IPositionable
     {
         public int DefenseValue { get; set; }
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public Armor()
         {

@@ -14,19 +14,20 @@ namespace Mandatory2DGameFramework.Models
     /// Base creature that can attack, receive hits, loot items and notify observers.
     /// creature følger ikke SOLID den kan alt for meget og skal være template
     /// </summary>
-    public abstract class Creature : IWorldObject, ICreature, IMove
+    public abstract class Creature : IWorldObject, ICreature,IPositionable, IMove
     {
         public int HitPoint { get; set; }
         // Todo consider how many attack / defense weapons are allowed
         //decided on 1 of each for simplicity
+        //TODO skal creatuer overhoved have Lootable ? skal setup refraktureres til at creature ikke er worldobject? eller skal world object ændres så lootable ikke er med i base abstract class?
         //TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som hit osv?
         public IAttackItem?   Attack { get; set; }
         public IDefenseItem?  Defense { get; set; }
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
-        public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         private readonly List<ICreatureObserver> _observer = new();
 

@@ -12,7 +12,7 @@ namespace Mandatory2DGameFramework.Models
     /// Base class for all immovable world objects.
     /// Automatically sets Lootable and Removable to false.
     /// </summary>
-    internal class ImmovableObject : WorldObject, IImmovable
+    public class ImmovableObject : WorldObject, IImmovable
     {
         protected ImmovableObject()
         {

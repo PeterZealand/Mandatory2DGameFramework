@@ -13,7 +13,7 @@ namespace Mandatory2DGameFramework.Worlds
     {
         public int MaxX { get; set; }
         public int MaxY { get; set; }
-        public List<WorldObject> WorldObjects { get; } = new();
+        public List<IWorldObject> WorldObjects { get; } = new();
 
         public World(int maxX, int maxY)
         {
@@ -30,19 +30,44 @@ namespace Mandatory2DGameFramework.Worlds
                           .Any(o => o.X == x && o.Y == y && o is Wall);
         }
 
-        public void AddObject(WorldObject obj)
+        public void AddObject(IWorldObject obj)
         {
+            // Check for duplicates by name (using operator overload)
             if (WorldObjects.Any(o => o == obj))
             {
                 GameLogger.Instance.LogWarning($"Object '{obj.Name}' already exists in the world.");
                 return;
             }
 
+            // Check for overlapping positions if applicable
+            if (obj is IPositionable pos)
+            {
+                bool occupied = WorldObjects
+                    .OfType<IPositionable>()
+                    .Any(o => o.X == pos.X && o.Y == pos.Y);
+
+                if (occupied)
+                {
+                    GameLogger.Instance.LogWarning(
+                        $"Cannot place '{obj.Name}' at ({pos.X}, {pos.Y}) — space already occupied."
+                    );
+                    return;
+                }
+            }
+
+            // Enforce immovable rules - commented out for now - dont think its needed or correct here
+            //if (obj is IImmovable)
+            //{
+            //    obj.Lootable = false;
+            //    obj.Removable = false;
+            //    GameLogger.Instance.LogInfo($"'{obj.Name}' is immovable and cannot be looted or removed.");
+            //}
+
             WorldObjects.Add(obj);
             GameLogger.Instance.LogInfo($"Added '{obj.Name}' to the world.");
         }
 
-        public void RemoveObject(WorldObject obj)
+        public void RemoveObject(IWorldObject obj)
         {
             if (WorldObjects.Contains(obj))
             {
