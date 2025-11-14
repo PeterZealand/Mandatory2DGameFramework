@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
-    public class AttackItem : IWorldObject,  IAttackItem, IPositionable
+    /// <summary>Concrete attack item.</summary>
+    public class AttackItem : IWorldObject, IAttackItem, IPositionable
     {
         public int Damage { get; set; }
         public string Name { get; set; }
@@ -23,12 +24,9 @@ namespace Mandatory2DGameFramework.Models
             Damage = 0;
             Lootable = true;
             Removable = true;
-
         }
 
         public override string ToString()
-        {
-            return $"{{{nameof(Name)}={Name}, {nameof(Damage)}={Damage.ToString()}}}";
-        }
+            => $"{{{nameof(Name)}={Name}, {nameof(Damage)}={Damage}}}";
     }
 }

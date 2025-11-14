@@ -22,6 +22,6 @@ namespace Mandatory2DGameFramework.Models
             Y = y;
         }
 
-        public override string ToString() => $"Wall at ({X}, {Y})";
+        public override string ToString() => $"Wall({X},{Y})";
     }
 }

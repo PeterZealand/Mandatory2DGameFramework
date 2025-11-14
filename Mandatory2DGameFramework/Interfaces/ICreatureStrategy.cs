@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
+    //TODO
+    //kan eventuelt være at hit fungerer anderledes når du er såret?
+
+    /// <summary>Defines an action for a creature (Strategy pattern).</summary>
     public interface ICreatureStrategy
     {
-        //TODO
-        //kan eventuelt være at hit fungerer anderledes når du er såret?
+        /// <summary>Executes the configured creature action.</summary>
         void PerformAction();
     }
 }

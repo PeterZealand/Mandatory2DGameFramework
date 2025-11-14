@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Patterns
 {
     /// <summary>
-    /// Abstract decorator for enhancing defence items dynamically.
+    /// Base decorator for dynamically enhancing defense items.
     /// </summary>
     public abstract class DefenseDecorator : IDefenseItem
     {
@@ -19,11 +19,13 @@ namespace Mandatory2DGameFramework.Patterns
         public string Name { get; set; }
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
+
         protected DefenseDecorator(IDefenseItem enchanted)
         {
             Enchanted = enchanted;
-            if (enchanted is WorldObject obj)
-                Name = obj.Name;
+            Name = enchanted.Name;
+            Lootable = enchanted.Lootable;
+            Removable = enchanted.Removable;
         }
 
         public abstract int ReduceDamage(int incoming);

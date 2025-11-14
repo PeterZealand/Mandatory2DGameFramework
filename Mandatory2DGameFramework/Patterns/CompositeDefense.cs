@@ -18,7 +18,7 @@ namespace Mandatory2DGameFramework.Patterns
     // forsøger med Armor
     public class CompositeDefense : IDefenseItem
     {
-        public string Name { get; set; } = "Composite defense";
+        public string Name { get; set; } = "Composite Defense";
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
         private readonly List<IDefenseItem> _defenses = new();
@@ -26,16 +26,18 @@ namespace Mandatory2DGameFramework.Patterns
         public void Add(IDefenseItem defense) => _defenses.Add(defense);
 
         //Kan man bruge .Sum her?
-        public int DefenseValue
-        {
-            get
-            {
-                int total = 0;
-                foreach (var d in _defenses)
-                    total += d.DefenseValue;
-                return total;
-            }
-        }
+        //public int DefenseValue
+        //{
+        //    get
+        //    {
+        //        int total = 0;
+        //        foreach (var d in _defenses)
+        //            total += d.DefenseValue;
+        //        return total;
+        //    }
+        //}
+        public int DefenseValue => _defenses.Sum(d => d.DefenseValue);
+
         public int ReduceDamage(int incoming)
         {
             int reduced = incoming;

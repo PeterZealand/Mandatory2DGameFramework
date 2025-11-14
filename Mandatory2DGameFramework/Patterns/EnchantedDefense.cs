@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Mandatory2DGameFramework.Patterns
 {
     /// <summary>
-    /// An enchanted defensive item that boosts another item's defense value.
+    /// Decorator adding a flat bonus to defense.
     /// </summary>
     public class EnchantedDefense : DefenseDecorator
     {
@@ -31,8 +31,8 @@ namespace Mandatory2DGameFramework.Patterns
 
         public override int ReduceDamage(int incoming)
         {
-            int reduced = incoming - DefenseValue;
-            return reduced < 0 ? 0 : reduced;
+            int remaining = incoming - DefenseValue;
+            return remaining < 0 ? 0 : remaining;
         }
     }
 }

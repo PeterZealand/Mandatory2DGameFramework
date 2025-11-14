@@ -24,15 +24,12 @@ namespace Mandatory2DGameFramework.Models
         }
 
         public override string ToString()
-        {
-            return $"{{{nameof(Name)}={Name}, {nameof(DefenseValue)}={DefenseValue.ToString()}}}";
-        }
+            => $"{{{nameof(Name)}={Name}, {nameof(DefenseValue)}={DefenseValue}}}";
 
         public int ReduceDamage(int incoming)
         {
-            int reduce = incoming - DefenseValue;
-            if (reduce < 0) reduce = 0;
-            return reduce;
+            int remaining = incoming - DefenseValue;
+            return remaining < 0 ? 0 : remaining;
         }
     }
 }
