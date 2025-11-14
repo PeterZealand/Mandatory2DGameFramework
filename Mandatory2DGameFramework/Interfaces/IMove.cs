@@ -13,8 +13,11 @@ namespace Mandatory2DGameFramework.Interfaces
     public interface IMove
     {
         /// <summary>
-        /// Moves the object by the given delta values (dx, dy).
+        /// Moves the object by the given delta values (dx, dy) within the provided world.
         /// </summary>
-        void Move(int dx, int dy, World world);
+        /// <param name="dx">Delta X.</param>
+        /// <param name="dy">Delta Y.</param>
+        /// <param name="world">World context for bounds and collision checks.</param>
+        void Move(int dx, int dy, IWorld world);
     }
 }

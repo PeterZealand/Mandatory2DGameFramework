@@ -6,15 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
     public interface IWorld
     {
-        public int MaxX { get; set; }
-        public int MaxY { get; set; }
-        public bool IsBlocked(int x, int y);
-        public void AddObject(WorldObject obj);
-        public void RemoveObject(WorldObject obj);
+        int MaxX { get; set; }
+        int MaxY { get; set; }
+        bool IsBlocked(int x, int y);
+        void AddObject(IWorldObject obj);
+        void RemoveObject(IWorldObject obj);
     }
 }

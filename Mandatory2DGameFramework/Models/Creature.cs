@@ -10,27 +10,44 @@ using Mandatory2DGameFramework.Interfaces;
 
 namespace Mandatory2DGameFramework.Models
 {
+    // Todo consider how many attack / defense weapons are allowed
+    //decided on 1 of each for simplicity
+    //TODO skal creatuer overhoved have Lootable ? skal setup refraktureres til at creature ikke er worldobject? eller skal world object ændres så lootable ikke er med i base abstract class?
+    //TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som hit osv?
+
     /// <summary>
     /// Base creature that can attack, receive hits, loot items and notify observers.
     /// creature følger ikke SOLID den kan alt for meget og skal være template
     /// </summary>
-    public abstract class Creature : IWorldObject, ICreature,IPositionable, IMove
+    public abstract class Creature : IWorldObject, ICreature, IPositionable, IMove
     {
+        /// <summary>Current health points of the creature.</summary>
         public int HitPoint { get; set; }
-        // Todo consider how many attack / defense weapons are allowed
-        //decided on 1 of each for simplicity
-        //TODO skal creatuer overhoved have Lootable ? skal setup refraktureres til at creature ikke er worldobject? eller skal world object ændres så lootable ikke er med i base abstract class?
-        //TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som hit osv?
-        public IAttackItem?   Attack { get; set; }
-        public IDefenseItem?  Defense { get; set; }
+
+        /// <summary>Equipped attack item (optional).</summary>
+        public IAttackItem? Attack { get; set; }
+
+        /// <summary>Equipped defense item (optional).</summary>
+        public IDefenseItem? Defense { get; set; }
+
+        /// <summary>Display name of the creature.</summary>
         public string Name { get; set; }
+
+        /// <summary>Whether the creature can be looted.</summary>
         public bool Lootable { get; set; }
+
+        /// <summary>Whether the creature can be removed from the world.</summary>
         public bool Removable { get; set; }
+
+        /// <summary>X coordinate in the world.</summary>
         public int X { get; set; }
+
+        /// <summary>Y coordinate in the world.</summary>
         public int Y { get; set; }
 
         private readonly List<ICreatureObserver> _observer = new();
 
+        /// <summary>Registers an observer for hit notifications.</summary>
         public void RegisterObserver(ICreatureObserver observer)
         {
             if (!_observer.Contains(observer))
@@ -39,6 +56,7 @@ namespace Mandatory2DGameFramework.Models
             }
         }
 
+        /// <summary>Removes a previously registered observer.</summary>
         public void RemoveObserver(ICreatureObserver observer)
         {
             if (_observer.Contains(observer))
@@ -47,6 +65,8 @@ namespace Mandatory2DGameFramework.Models
             }
         }
 
+        /// <summary>Notifies observers that the creature took damage.</summary>
+        /// <param name="damage">The final damage received.</param>
         public void NotifyObservers(int damage)
         {
             foreach (var observer in _observer)
@@ -55,7 +75,8 @@ namespace Mandatory2DGameFramework.Models
             }
         }
 
-        public Creature()
+        /// <summary>Initializes a new creature with default values.</summary>
+        protected Creature()
         {
             Name = string.Empty;
             HitPoint = 100;
@@ -64,17 +85,18 @@ namespace Mandatory2DGameFramework.Models
             Defense = null;
         }
 
+        /// <summary>Calculates and returns outgoing damage (5 when unarmed).</summary>
         public virtual int Hit()
         {
-            // return the damage this creature produces (5 when unarmed)
             int damage = Attack?.Damage ?? ICreature.UnarmedDamage;
             GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)")}.");
             return damage;
         }
 
+        /// <summary>Applies an incoming hit after defense reduction and notifies observers.</summary>
+        /// <param name="hit">The incoming hit amount.</param>
         public virtual void ReceiveHit(int hit)
         {
-            // reduce incoming hit by defense if present, clamp to non-negative and apply to HitPoint
             int reduction = Defense?.DefenseValue ?? 0;
             int DamageRecieved = hit - reduction;
             if (DamageRecieved < 0) DamageRecieved = 0;
@@ -82,23 +104,22 @@ namespace Mandatory2DGameFramework.Models
             HitPoint -= DamageRecieved;
             if (HitPoint < 0) HitPoint = 0;
 
-            Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
+            GameLogger.Instance.LogInfo($"{Name} received {hit} damage, reduced by {reduction}, Damage Recieved {DamageRecieved}. Remaining HP: {HitPoint}.");
             NotifyObservers(DamageRecieved);
         }
 
-        public void Move(int dx, int dy, World world)
+        /// <summary>Moves the creature by dx/dy if within bounds and not blocked.</summary>
+        public void Move(int dx, int dy, IWorld world)
         {
             int newX = X + dx;
             int newY = Y + dy;
 
-            // Stay within bounds
             if (newX < 0 || newY < 0 || newX >= world.MaxX || newY >= world.MaxY)
             {
                 GameLogger.Instance.LogWarning($"{Name} cannot move outside the world bounds!");
                 return;
             }
 
-            // Check for obstacles
             if (world.IsBlocked(newX, newY))
             {
                 GameLogger.Instance.LogWarning($"{Name} cannot move to ({newX}, {newY}) — blocked by wall!");
@@ -109,18 +130,19 @@ namespace Mandatory2DGameFramework.Models
             Y = newY;
             GameLogger.Instance.LogInfo($"{Name} moved to ({X}, {Y}).");
         }
-        //TODO strategy pattern via interface eller action?
-        public void Loot(WorldObject obj)
+
+        /// <summary>Attempts to equip better items from a world object if lootable.</summary>
+        public void Loot(IWorldObject obj)
         {
             if (obj == null)
             {
-                Instance.LogWarning($"{Name} tried to loot a null object.");
+                GameLogger.Instance.LogWarning($"{Name} tried to loot a null object.");
                 return;
             }
 
             if (!obj.Lootable)
             {
-                Instance.LogWarning($"{Name} attempted to loot '{obj.Name}', but it is not lootable.");
+                GameLogger.Instance.LogWarning($"{Name} attempted to loot '{obj.Name}', but it is not lootable.");
                 return;
             }
 
@@ -139,22 +161,22 @@ namespace Mandatory2DGameFramework.Models
                     }
                     break;
 
-                case IDefenseItem newDefence:
-                    if (Defense == null || newDefence.DefenseValue > Defense.DefenseValue)
+                case IDefenseItem newDefense:
+                    if (Defense == null || newDefense.DefenseValue > Defense.DefenseValue)
                     {
-                        GameLogger.Instance.LogInfo($"{Name} equips new defense item '{obj.Name}' (Value: {newDefence.DefenseValue}).");
-                        Defense = newDefence as DefenseItem; // or store as IDefenseItem – see below
+                        GameLogger.Instance.LogInfo($"{Name} equips new defense item '{obj.Name}' (Value: {newDefense.DefenseValue}).");
+                        Defense = newDefense;
                         obj.Removable = true;
                     }
                     else
                     {
-                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{obj.Name}' (Value: {newDefence.DefenseValue}).");
+                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{obj.Name}' (Value: {newDefense.DefenseValue}).");
                     }
                     break;
             }
-
         }
 
+        /// <summary>Returns a debug string for the creature.</summary>
         public override string ToString()
         {
             return $"{{{nameof(Name)}={Name}, {nameof(HitPoint)}={HitPoint.ToString()}, {nameof(Attack)}={Attack}, {nameof(Defense)}={Defense}}}";
