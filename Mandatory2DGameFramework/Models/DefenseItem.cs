@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Models
 {
+    /// <summary>Concrete defense item.</summary>
     public class DefenseItem : IDefenseItem, IPositionable
     {
         public int DefenseValue { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Worlds
 {
-    public class World :IWorld
+    public abstract class World :IWorld
     {
         public int MaxX { get; set; }
         public int MaxY { get; set; }

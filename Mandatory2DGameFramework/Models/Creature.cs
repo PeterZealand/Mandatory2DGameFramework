@@ -109,7 +109,7 @@ namespace Mandatory2DGameFramework.Models
         }
 
         /// <summary>Moves the creature by dx/dy if within bounds and not blocked.</summary>
-        public void Move(int dx, int dy, IWorld world)
+        public virtual void Move(int dx, int dy, IWorld world)
         {
             int newX = X + dx;
             int newY = Y + dy;
@@ -132,7 +132,7 @@ namespace Mandatory2DGameFramework.Models
         }
 
         /// <summary>Attempts to equip better items from a world object if lootable.</summary>
-        public void Loot(IWorldObject obj)
+        public virtual void Loot(IWorldObject obj)
         {
             if (obj == null)
             {
