@@ -4,7 +4,7 @@ namespace Mandatory2DGameFramework.Interfaces
     public interface ICombatStrategyProvider
     {
         /// <param name="creature">The creature needing a strategy.</param>
-        /// <param name="healthRatio">A value between 0 and 1 (current HP / max HP).</param>
+        /// <param name="healthRatio">A value between 0 and 100 (current HP / max HP).</param>
         ICombatStrategy Select(ICreature creature, double healthRatio);
     }
 }
