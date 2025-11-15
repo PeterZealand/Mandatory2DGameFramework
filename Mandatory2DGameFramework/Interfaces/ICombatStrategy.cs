@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Interfaces
 {
-    //TODO
-    //kan eventuelt være at hit fungerer anderledes når du er såret?
-
-    /// <summary>
-    /// Defines an abstraction for combat behavior.
-    /// </summary>
+    /// <summary>DIP abstraction for combat behavior. Uses ICreature to avoid concrete coupling.</summary>
     public interface ICombatStrategy
     {
-        int CalculateAttackPower(Creature creature);
-        int CalculateDamageTaken(Creature creature, int incomingDamage);
-        void OnCombatEnd(Creature creature);
+        /// <summary>Given creature and base damage (weapon or unarmed), returns final attack power.</summary>
+        int CalculateAttackPower(ICreature creature, int baseDamage);
+
+        /// <summary>Given post-defense incoming damage, returns final damage taken.</summary>
+        int CalculateDamageTaken(ICreature creature, int incomingDamage);
+
+        /// <summary>Hook called after a combat exchange.</summary>
+        void OnCombatEnd(ICreature creature);
     }
 }
