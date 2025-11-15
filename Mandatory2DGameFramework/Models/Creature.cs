@@ -146,8 +146,7 @@ namespace Mandatory2DGameFramework.Models
         /// <param name="hit">Raw incoming damage before mitigation.</param>
         public virtual void ReceiveHit(int hit)
         {
-            int reduction = Defense?.DefenseValue ?? 0;
-            int afterDefense = hit - reduction;
+            int afterDefense = Defense?.ReduceDamage(hit) ?? hit;
             if (afterDefense < 0) afterDefense = 0;
 
             int finalDamage = CombatStrategy.CalculateDamageTaken(this, afterDefense);
@@ -155,7 +154,7 @@ namespace Mandatory2DGameFramework.Models
             HitPoint -= finalDamage;
             if (HitPoint < 0) HitPoint = 0;
 
-            GameLogger.Instance.LogInfo($"{Name} received {hit} incoming, reduced {reduction}, strategy applied -> {finalDamage}. Remaining HP: {HitPoint}/{MaxHitPoint}.");
+            GameLogger.Instance.LogInfo($"{Name} received {hit} incoming, defense -> {afterDefense}, strategy -> {finalDamage}. Remaining HP: {HitPoint}/{MaxHitPoint}.");
             NotifyObservers(finalDamage);
 
             RefreshStrategyIfChanged();
@@ -179,6 +178,25 @@ namespace Mandatory2DGameFramework.Models
             GameLogger.Instance.LogInfo($"{Name} heals {amount}. HP: {HitPoint}/{MaxHitPoint}.");
             RefreshStrategyIfChanged();
         }
+
+        /// <summary>
+        /// Template Method: Executes a full attack turn against a target.
+        /// Non-virtual; override the protected hooks to customize behavior.
+        /// </summary>
+        public void PerformAttackTurn(Creature target)
+        {
+            OnBeforeAttack(target);
+            int dmg = Hit();
+            target.ReceiveHit(dmg);
+            OnAfterAttack(target, dmg);
+            CombatStrategy.OnCombatEnd(this);
+        }
+
+        /// <summary>Hook: called before an attack; override to inject behavior.</summary>
+        protected virtual void OnBeforeAttack(Creature target) { }
+
+        /// <summary>Hook: called after an attack; override to inject behavior.</summary>
+        protected virtual void OnAfterAttack(Creature target, int dealtDamage) { }
         #endregion
 
         #region Movement
