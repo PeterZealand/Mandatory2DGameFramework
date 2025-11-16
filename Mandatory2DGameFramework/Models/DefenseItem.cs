@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Models
 {
     /// <summary>Concrete defense item.</summary>
-    public class DefenseItem : IDefenseItem, IPositionable
+    public abstract class DefenseItem : IDefenseItem, IPositionable
     {
         public int DefenseValue { get; set; }
         public string Name { get; set; }
@@ -27,7 +27,7 @@ namespace Mandatory2DGameFramework.Models
         public override string ToString()
             => $"{{{nameof(Name)}={Name}, {nameof(DefenseValue)}={DefenseValue}}}";
 
-        public int ReduceDamage(int incoming)
+        public virtual int ReduceDamage(int incoming)
         {
             int remaining = incoming - DefenseValue;
             return remaining < 0 ? 0 : remaining;

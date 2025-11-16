@@ -27,7 +27,7 @@ namespace Mandatory2DGameFramework.Worlds
         public bool IsBlocked(int x, int y)
         {
             return WorldObjects.OfType<IPositionable>()
-                          .Any(o => o.X == x && o.Y == y && o is Wall);
+                          .Any(o => o.X == x && o.Y == y && o is IImmovable);
         }
 
         public void AddObject(IWorldObject obj)

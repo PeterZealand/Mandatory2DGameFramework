@@ -72,17 +72,6 @@ namespace Mandatory2DGameFramework.Models
             CombatStrategy = SelectStrategy();
         }
 
-        /// <summary>
-        /// Convenience constructor (non-DI) using default strategy provider and thresholds.
-        /// </summary>
-        protected Creature()
-            : this(new DefaultCombatStrategyProvider(
-                new OptimalCombatStrategy(),
-                new WeakenedCombatStrategy(),
-                new DefensiveCombatStrategy()))
-        {
-        }
-
         #region Observer Pattern
         /// <summary>Registers an observer for hit notifications.</summary>
         public void RegisterObserver(ICreatureObserver observer)
@@ -166,18 +155,19 @@ namespace Mandatory2DGameFramework.Models
             }
         }
 
+        //TODO heal metode hvis jeg vil have healing i spillet
         /// <summary>
         /// Heals the creature (clamped to MaxHitPoint) and refreshes strategy if threshold crossing occurs.
         /// </summary>
         /// <param name="amount">Positive healing amount.</param>
-        public virtual void Heal(int amount)
-        {
-            if (amount <= 0 || HitPoint <= 0) return;
-            HitPoint += amount;
-            if (HitPoint > MaxHitPoint) HitPoint = MaxHitPoint;
-            GameLogger.Instance.LogInfo($"{Name} heals {amount}. HP: {HitPoint}/{MaxHitPoint}.");
-            RefreshStrategyIfChanged();
-        }
+        //public virtual void Heal(int amount)
+        //{
+        //    if (amount <= 0 || HitPoint <= 0) return;
+        //    HitPoint += amount;
+        //    if (HitPoint > MaxHitPoint) HitPoint = MaxHitPoint;
+        //    GameLogger.Instance.LogInfo($"{Name} heals {amount}. HP: {HitPoint}/{MaxHitPoint}.");
+        //    RefreshStrategyIfChanged();
+        //}
 
         /// <summary>
         /// Template Method: Executes a full attack turn against a target.

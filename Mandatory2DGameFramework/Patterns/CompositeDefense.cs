@@ -16,14 +16,14 @@ namespace Mandatory2DGameFramework.Patterns
     //Skal jeg have armor med så jeg kan bruge en composite class nu jeg kun kan have et defense item på af gangen?
     //eller skal items kunne forbedres?
     // forsøger med Armor
-    public class CompositeDefense : IDefenseItem
+    public abstract class CompositeDefense : IDefenseItem
     {
         public string Name { get; set; } = "Composite Defense";
         public bool Lootable { get; set; }
         public bool Removable { get; set; }
         private readonly List<IDefenseItem> _defenses = new();
 
-        public void Add(IDefenseItem defense) => _defenses.Add(defense);
+        public virtual void Add(IDefenseItem defense) => _defenses.Add(defense);
 
         //Kan man bruge .Sum her?
         //public int DefenseValue
@@ -38,7 +38,7 @@ namespace Mandatory2DGameFramework.Patterns
         //}
         public int DefenseValue => _defenses.Sum(d => d.DefenseValue);
 
-        public int ReduceDamage(int incoming)
+        public virtual int ReduceDamage(int incoming)
         {
             int reduced = incoming;
             foreach (var d in _defenses)

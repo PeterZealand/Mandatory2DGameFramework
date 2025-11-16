@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Models
 {
     /// <summary>Concrete attack item.</summary>
-    public class AttackItem : IWorldObject, IAttackItem, IPositionable
+    public abstract class AttackItem : IWorldObject, IAttackItem, IPositionable
     {
         public int Damage { get; set; }
         public string Name { get; set; }

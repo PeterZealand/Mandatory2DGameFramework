@@ -12,7 +12,7 @@ namespace Mandatory2DGameFramework.Models
     //TODO Armor og defense er næsten det samme, skal jeg have begge? skal armor kunnne mere? resists?
     //skal armor kunne have placement, eg flere armor items senere? fx boots og gloves?
     /// <summary>Armor item (same behavior as DefenseItem; consider merging).</summary>
-    public class Armor : IWorldObject, IDefenseItem, IPositionable
+    public abstract class Armor : IWorldObject, IDefenseItem, IPositionable
     {
         public int DefenseValue { get; set; }
         public string Name { get; set; }

@@ -9,17 +9,24 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Patterns
 {
     /// <summary>
-    /// Factory for creating game objects without hardcoded data.
+    /// Base factory implementing <see cref="IGameObjectFactory"/>.
+    /// Extend this abstract class or implement the interface directly to customize object creation.
     /// </summary>
-    /// TODO skal være abstract?
-    public abstract class GameObjectFactory
+    public abstract class GameObjectFactory : IGameObjectFactory
     {
+        /// <summary>Create a creature instance (override for custom stats).</summary>
         public abstract ICreature CreateCreature();
 
+        /// <summary>Create an attack item (override for custom stats).</summary>
         public abstract IAttackItem CreateAttackItem();
 
+        /// <summary>Create a defense item (override for custom stats).</summary>
         public abstract IDefenseItem CreateDefenseItem();
 
+        /// <summary>Create an immovable world object (e.g. wall, obstacle).</summary>
         public abstract IImmovable CreateImmovableWorldObject();
+
+        /// <summary>Create a world. Default implementation returns a basic derived World; override for terrain generation.</summary>
+        public abstract IWorld CreateWorld(int maxX, int maxY);
     }
 }
