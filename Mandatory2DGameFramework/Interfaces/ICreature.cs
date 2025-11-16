@@ -10,7 +10,7 @@ namespace Mandatory2DGameFramework.Interfaces
     public interface ICreature : IWorldObject
     {
         /// <summary>Base damage dealt when unarmed.</summary>
-        const int UnarmedDamage = 5;
+        int UnarmedDamage { get; set; }
         /// <summary>Current hit points.</summary>
         int HitPoint { get; set; }
     }

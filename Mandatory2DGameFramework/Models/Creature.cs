@@ -23,7 +23,10 @@ namespace Mandatory2DGameFramework.Models
         public int HitPoint { get; set; }
 
         /// <summary>Maximum health points (used to compute health ratio for strategy selection).</summary>
-        public int MaxHitPoint { get; protected set; }
+        public int MaxHitPoint { get; set; }
+
+        /// <summary>Base damage dealt when unarmed.</summary>
+        public int UnarmedDamage { get; set; }
 
         /// <summary>Equipped attack item (optional). Unarmed if null (uses <see cref="ICreature.UnarmedDamage"/>).</summary>
         public IAttackItem? Attack { get; set; }
@@ -121,9 +124,9 @@ namespace Mandatory2DGameFramework.Models
         /// Calculates outgoing damage using weapon (if any) or unarmed damage, then passes through combat strategy.
         /// </summary>
         /// <returns>Final attack power.</returns>
-        public virtual int Hit()
+        public virtual int Hit(ICreature creature)
         {
-            int baseDamage = Attack?.Damage ?? ICreature.UnarmedDamage;
+            int baseDamage = Attack?.Damage ?? creature.UnarmedDamage;
             int damage = CombatStrategy.CalculateAttackPower(this, baseDamage);
             GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)")} ({CombatStrategy.GetType().Name}).");
             return damage;
@@ -169,18 +172,18 @@ namespace Mandatory2DGameFramework.Models
         //    RefreshStrategyIfChanged();
         //}
 
-        /// <summary>
-        /// Template Method: Executes a full attack turn against a target.
-        /// Non-virtual; override the protected hooks to customize behavior.
-        /// </summary>
-        public void PerformAttackTurn(Creature target)
-        {
-            OnBeforeAttack(target);
-            int dmg = Hit();
-            target.ReceiveHit(dmg);
-            OnAfterAttack(target, dmg);
-            CombatStrategy.OnCombatEnd(this);
-        }
+        ///// <summary>
+        ///// Template Method: Executes a full attack turn against a target.
+        ///// Non-virtual; override the protected hooks to customize behavior.
+        ///// </summary>
+        //public virtual void PerformAttackTurn(ICreature target)
+        //{
+        //    OnBeforeAttack(target);
+        //    int dmg = Hit(target);
+        //    target.ReceiveHit(dmg);
+        //    OnAfterAttack(target, dmg);
+        //    CombatStrategy.OnCombatEnd(this);
+        //}
 
         /// <summary>Hook: called before an attack; override to inject behavior.</summary>
         protected virtual void OnBeforeAttack(Creature target) { }
@@ -262,10 +265,8 @@ namespace Mandatory2DGameFramework.Models
                     break;
             }
         }
-        #endregion
-
         /// <summary>Returns a debug string for the creature.</summary>
         public override string ToString()
-            => $"{{Name={Name}, HP={HitPoint}/{MaxHitPoint}, Attack={(Attack?.Damage ?? ICreature.UnarmedDamage)}, Defense={Defense?.DefenseValue ?? 0}, Strategy={CombatStrategy?.GetType().Name}}}";
+            => $"{{Name={Name}, HP={HitPoint}/{MaxHitPoint}, Attack={Attack?.Damage ?? UnarmedDamage}, Defense={Defense?.DefenseValue ?? 0}, Strategy={CombatStrategy?.GetType().Name}}}";
     }
 }
