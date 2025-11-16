@@ -9,230 +9,196 @@ namespace Mandatory2DGameFramework.Models
 {
     // TODO consider how many attack / defense weapons are allowed (currently 1 of each for simplicity)
     // TODO skal creature overhoved have Lootable ? skal setup refaktureres til at creature ikke er worldobject?
-    //      eller skal world object ændres så lootable ikke er med i base abstract class?
     // TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som Hit osv?
-    // NOTE: This class acts as a template/root for concrete creatures (may be split for stricter SOLID later).
+    // NOTE: Acts as a template/root; World enforces rules, Creature initiates intent.
 
     /// <summary>
-    /// Base creature that can attack, receive hits, loot items and notify observers.
-    /// Now DIP-compliant for combat behavior via <see cref="ICombatStrategyProvider"/> + <see cref="ICombatStrategy"/>.
+    /// Framework creature implementation using only interfaces (no concrete class coupling).
+    /// Handles intent (move / fight); delegates rule enforcement to <see cref="IWorld"/>.
     /// </summary>
-    public abstract class Creature : IWorldObject, ICreature, IPositionable, IMove
+    public abstract class Creature : ICreature, IPositionable, IMovable
     {
-        /// <summary>Current health points of the creature.</summary>
-        public int HitPoint { get; set; }
+        /// <summary>Display name.</summary>
+        public string Name { get; set; } = "Unnamed Creature";
 
-        /// <summary>Maximum health points (used to compute health ratio for strategy selection).</summary>
-        public int MaxHitPoint { get; set; }
+        /// <summary>Whether this creature can be looted after defeat.</summary>
+        public bool Lootable { get; set; } = false;
 
-        /// <summary>Base damage dealt when unarmed.</summary>
-        public int UnarmedDamage { get; set; }
+        /// <summary>Whether this creature should be removed from world.</summary>
+        public bool Removable { get; set; } = true;
 
-        /// <summary>Equipped attack item (optional). Unarmed if null (uses <see cref="ICreature.UnarmedDamage"/>).</summary>
-        public IAttackItem? Attack { get; set; }
+        /// <summary>Current hit points.</summary>
+        public int HitPoint { get; set; } = 100;
 
-        /// <summary>Equipped defense item (optional). Damage reduction depends on its <see cref="IDefenseItem.DefenseValue"/>.</summary>
-        public IDefenseItem? Defense { get; set; }
+        /// <summary>Maximum hit points (used for percentage calculations).</summary>
+        public int MaxHitPoint { get; protected set; } = 100;
 
-        /// <summary>Display name of the creature.</summary>
-        public string Name { get; set; }
+        /// <summary>Unarmed base damage (fallback when no attack item).</summary>
+        public int UnarmedDamage { get; set; } = 5;
 
-        /// <summary>Whether the creature can be looted.</summary>
-        public bool Lootable { get; set; }
-
-        /// <summary>Whether the creature can be removed from the world (e.g. when defeated).</summary>
-        public bool Removable { get; set; }
-
-        /// <summary>X coordinate in the world.</summary>
+        /// <summary>X coordinate.</summary>
         public int X { get; set; }
 
-        /// <summary>Y coordinate in the world.</summary>
+        /// <summary>Y coordinate.</summary>
         public int Y { get; set; }
 
-        /// <summary>Current combat strategy selected for this creature (may change with HP).</summary>
-        public ICombatStrategy CombatStrategy { get; private set; }
+        /// <summary>Equipped attack item (optional).</summary>
+        public IAttackItem? Attack { get; set; }
 
-        private readonly List<ICreatureObserver> _observer = new();
+        /// <summary>Equipped defense item (optional).</summary>
+        public IDefenseItem? Defense { get; set; }
+
+        /// <summary>Active combat strategy (selected via provider when fighting).</summary>
+        public ICombatStrategy? CombatStrategy { get; private set; }
+
         private readonly ICombatStrategyProvider _strategyProvider;
+        private readonly List<ICreatureObserver> _observers = new();
 
         /// <summary>
         /// Primary constructor for dependency injection.
         /// </summary>
-        /// <param name="strategyProvider">Provides appropriate combat strategies based on health ratio.</param>
-        /// <param name="maxHitPoint">Initial and maximum hit points.</param>
-        protected Creature(ICombatStrategyProvider strategyProvider, int maxHitPoint = 100)
+        protected Creature(ICombatStrategyProvider strategyProvider)
         {
             _strategyProvider = strategyProvider;
-            Name = string.Empty;
-            MaxHitPoint = maxHitPoint;
-            HitPoint = maxHitPoint;
-
-            Attack = null;
-            Defense = null;
-            Lootable = false;
-            Removable = false;
-
-            CombatStrategy = SelectStrategy();
+            MaxHitPoint = HitPoint;
         }
 
-        #region Observer Pattern
-        /// <summary>Registers an observer for hit notifications.</summary>
+        #region Observer
+        /// <summary>Registers a damage observer.</summary>
         public void RegisterObserver(ICreatureObserver observer)
         {
-            if (!_observer.Contains(observer))
-                _observer.Add(observer);
+            if (!_observers.Contains(observer))
+                _observers.Add(observer);
         }
 
         /// <summary>Removes a previously registered observer.</summary>
         public void RemoveObserver(ICreatureObserver observer)
         {
-            if (_observer.Contains(observer))
-                _observer.Remove(observer);
+            if (_observers.Contains(observer))
+                _observers.Remove(observer);
         }
 
-        /// <summary>Notifies observers that the creature took damage.</summary>
-        /// <param name="damage">Final damage applied to HP.</param>
+        /// <summary>Notifies observers that damage was taken.</summary>
         protected void NotifyObservers(int damage)
         {
-            foreach (var observer in _observer)
-                observer.OnCreatureHit(Name, damage);
+            foreach (var o in _observers)
+                o.OnCreatureHit(Name, damage);
         }
         #endregion
 
-        #region Strategy Selection
-        /// <summary>Determines the correct strategy according to current HP ratio.</summary>
-        private ICombatStrategy SelectStrategy()
+        #region Movement (Intent)
+        /// <summary>
+        /// Creature intent to move; actual resolution (blocking, combat, loot) is handled by <see cref="IWorld.MoveCreature"/>.
+        /// </summary>
+        public virtual void Move(int dx, int dy, IWorld world)
         {
-            double ratio = MaxHitPoint > 0 ? (double)HitPoint / MaxHitPoint : 0;
-            return _strategyProvider.Select(this, ratio);
-        }
+            int targetX = X + dx;
+            int targetY = Y + dy;
 
-        /// <summary>Updates the active strategy if the health ratio bracket changed.</summary>
-        private void RefreshStrategyIfChanged()
-        {
-            var newStrategy = SelectStrategy();
-            if (!ReferenceEquals(newStrategy, CombatStrategy))
+            if (!world.MoveCreature(this, targetX, targetY))
             {
-                CombatStrategy = newStrategy;
-                GameLogger.Instance.LogInfo($"{Name} strategy changed to {CombatStrategy.GetType().Name} (HP {HitPoint}/{MaxHitPoint}).");
+                GameLogger.Instance.LogWarning($"{Name} could not move to ({targetX},{targetY}).");
             }
         }
         #endregion
 
         #region Combat
         /// <summary>
-        /// Calculates outgoing damage using weapon (if any) or unarmed damage, then passes through combat strategy.
+        /// Calculates outgoing raw damage before opponent mitigation.
         /// </summary>
-        /// <returns>Final attack power.</returns>
-        public virtual int Hit(ICreature creature)
+        protected virtual int CalculateAttackDamage()
         {
-            int baseDamage = Attack?.Damage ?? creature.UnarmedDamage;
-            int damage = CombatStrategy.CalculateAttackPower(this, baseDamage);
-            GameLogger.Instance.LogInfo($"{Name} attacks for {damage} damage{(Attack != null ? $" using {Attack.Name}" : " (unarmed)")} ({CombatStrategy.GetType().Name}).");
-            return damage;
+            int baseDamage = Attack?.Damage ?? UnarmedDamage;
+            var strategy = _strategyProvider.Select(this, HealthRatio());
+            CombatStrategy = strategy;
+            return strategy.CalculateAttackPower(this, baseDamage);
         }
 
         /// <summary>
-        /// Applies incoming hit: reduce by defense, then adjust through combat strategy, update HP, observers and strategy.
+        /// Applies incoming damage after defense & strategy mitigation.
         /// </summary>
-        /// <param name="hit">Raw incoming damage before mitigation.</param>
-        public virtual void ReceiveHit(int hit)
+        protected virtual void ApplyDamage(int rawIncoming)
         {
-            int afterDefense = Defense?.ReduceDamage(hit) ?? hit;
+            int afterDefense = Defense?.ReduceDamage(rawIncoming) ?? rawIncoming;
             if (afterDefense < 0) afterDefense = 0;
 
-            int finalDamage = CombatStrategy.CalculateDamageTaken(this, afterDefense);
+            var strategy = _strategyProvider.Select(this, HealthRatio());
+            int final = strategy.CalculateDamageTaken(this, afterDefense);
 
-            HitPoint -= finalDamage;
+            HitPoint -= final;
             if (HitPoint < 0) HitPoint = 0;
 
-            GameLogger.Instance.LogInfo($"{Name} received {hit} incoming, defense -> {afterDefense}, strategy -> {finalDamage}. Remaining HP: {HitPoint}/{MaxHitPoint}.");
-            NotifyObservers(finalDamage);
-
-            RefreshStrategyIfChanged();
+            GameLogger.Instance.LogInfo($"{Name} took {final} damage (raw {rawIncoming}, defense -> {afterDefense}). HP {HitPoint}/{MaxHitPoint}.");
+            NotifyObservers(final);
 
             if (HitPoint == 0)
             {
-                GameLogger.Instance.LogInfo($"{Name} is defeated.");
                 Removable = true;
+                GameLogger.Instance.LogInfo($"{Name} has been defeated.");
             }
         }
 
-        //TODO heal metode hvis jeg vil have healing i spillet
         /// <summary>
-        /// Heals the creature (clamped to MaxHitPoint) and refreshes strategy if threshold crossing occurs.
+        /// Public combat routine between this creature and an opponent.
+        /// World triggers this when two creatures collide.
         /// </summary>
-        /// <param name="amount">Positive healing amount.</param>
-        //public virtual void Heal(int amount)
-        //{
-        //    if (amount <= 0 || HitPoint <= 0) return;
-        //    HitPoint += amount;
-        //    if (HitPoint > MaxHitPoint) HitPoint = MaxHitPoint;
-        //    GameLogger.Instance.LogInfo($"{Name} heals {amount}. HP: {HitPoint}/{MaxHitPoint}.");
-        //    RefreshStrategyIfChanged();
-        //}
-
-        ///// <summary>
-        ///// Template Method: Executes a full attack turn against a target.
-        ///// Non-virtual; override the protected hooks to customize behavior.
-        ///// </summary>
-        //public virtual void PerformAttackTurn(ICreature target)
-        //{
-        //    OnBeforeAttack(target);
-        //    int dmg = Hit(target);
-        //    target.ReceiveHit(dmg);
-        //    OnAfterAttack(target, dmg);
-        //    CombatStrategy.OnCombatEnd(this);
-        //}
-
-        /// <summary>Hook: called before an attack; override to inject behavior.</summary>
-        protected virtual void OnBeforeAttack(Creature target) { }
-
-        /// <summary>Hook: called after an attack; override to inject behavior.</summary>
-        protected virtual void OnAfterAttack(Creature target, int dealtDamage) { }
-        #endregion
-
-        #region Movement
-        /// <summary>Moves the creature by (dx, dy) if inside world bounds and not blocked.</summary>
-        public virtual void Move(int dx, int dy, IWorld world)
+        public virtual void Fight(ICreature opponent)
         {
-            int newX = X + dx;
-            int newY = Y + dy;
-
-            if (newX < 0 || newY < 0 || newX >= world.MaxX || newY >= world.MaxY)
-            {
-                GameLogger.Instance.LogWarning($"{Name} cannot move outside the world bounds!");
+            if (opponent == null || opponent.HitPoint <= 0 || HitPoint <= 0)
                 return;
-            }
 
-            if (world.IsBlocked(newX, newY))
-            {
-                GameLogger.Instance.LogWarning($"{Name} cannot move to ({newX}, {newY}) — blocked by wall!");
-                return;
-            }
+            OnBeforeFight(opponent);
 
-            X = newX;
-            Y = newY;
-            GameLogger.Instance.LogInfo($"{Name} moved to ({X}, {Y}).");
+            // Attacker damage
+            int myDamage = CalculateAttackDamage();
+
+            // Opponent damage
+            var opponentStrategy = _strategyProvider.Select(opponent, OpponentHealthRatio(opponent));
+            int opponentBase = (opponent is Creature oc && oc.Attack != null) ? oc.Attack.Damage : opponent.UnarmedDamage;
+            int opponentAttackPower = opponentStrategy.CalculateAttackPower(opponent, opponentBase);
+
+            // Apply results
+            if (opponent is Creature concreteOpponent)
+                concreteOpponent.ApplyDamage(myDamage);
+            else
+                opponent.HitPoint -= myDamage; // fallback (no defense mitigation if not concrete)
+
+            ApplyDamage(opponentAttackPower);
+
+            GameLogger.Instance.LogInfo($"{Name} dealt {myDamage} to {opponent.Name}; {opponent.Name} dealt {opponentAttackPower} to {Name}.");
+
+            OnAfterFight(opponent, myDamage, opponentAttackPower);
+
+            CombatStrategy?.OnCombatEnd(this);
         }
+
+        /// <summary>Hook executed before fight resolution.</summary>
+        protected virtual void OnBeforeFight(ICreature opponent) { }
+
+        /// <summary>Hook executed after fight resolution.</summary>
+        protected virtual void OnAfterFight(ICreature opponent, int dealt, int received) { }
+
+        private double HealthRatio() => MaxHitPoint > 0 ? (double)HitPoint / MaxHitPoint : 0.0;
+        private double OpponentHealthRatio(ICreature c) => c is Creature cc && cc.MaxHitPoint > 0
+            ? (double)cc.HitPoint / cc.MaxHitPoint
+            : 0.0;
         #endregion
 
-        #region Looting
+        #region Loot
         /// <summary>
-        /// Attempts to equip better items from a world object if it is lootable.
-        /// Replaces current equipment only if the new item is stronger.
+        /// Attempts to improve equipment based on a lootable world object.
         /// </summary>
         public virtual void Loot(IWorldObject obj)
         {
             if (obj == null)
             {
-                GameLogger.Instance.LogWarning($"{Name} tried to loot a null object.");
+                GameLogger.Instance.LogWarning($"{Name} tried to loot null.");
                 return;
             }
 
             if (!obj.Lootable)
             {
-                GameLogger.Instance.LogWarning($"{Name} attempted to loot '{obj.Name}', but it is not lootable.");
+                GameLogger.Instance.LogWarning($"{Name} attempted to loot '{obj.Name}' but it is not lootable.");
                 return;
             }
 
@@ -241,32 +207,33 @@ namespace Mandatory2DGameFramework.Models
                 case IAttackItem attack:
                     if (Attack == null || attack.Damage > Attack.Damage)
                     {
-                        GameLogger.Instance.LogInfo($"{Name} equips attack item '{attack.Name}' (Damage: {attack.Damage}).");
                         Attack = attack;
                         obj.Removable = true;
+                        GameLogger.Instance.LogInfo($"{Name} equipped attack item '{attack.Name}' (Damage {attack.Damage}).");
                     }
                     else
                     {
-                        GameLogger.Instance.LogInfo($"{Name} ignores weaker attack item '{attack.Name}' (Damage: {attack.Damage}).");
+                        GameLogger.Instance.LogInfo($"{Name} ignored weaker attack item '{attack.Name}'.");
                     }
                     break;
 
-                case IDefenseItem newDefense:
-                    if (Defense == null || newDefense.DefenseValue > Defense.DefenseValue)
+                case IDefenseItem defense:
+                    if (Defense == null || defense.DefenseValue > Defense.DefenseValue)
                     {
-                        GameLogger.Instance.LogInfo($"{Name} equips defense item '{obj.Name}' (Value: {newDefense.DefenseValue}).");
-                        Defense = newDefense;
+                        Defense = defense;
                         obj.Removable = true;
+                        GameLogger.Instance.LogInfo($"{Name} equipped defense item '{defense.Name}' (Value {defense.DefenseValue}).");
                     }
                     else
                     {
-                        GameLogger.Instance.LogInfo($"{Name} ignores weaker defense item '{obj.Name}' (Value: {newDefense.DefenseValue}).");
+                        GameLogger.Instance.LogInfo($"{Name} ignored weaker defense item '{defense.Name}'.");
                     }
                     break;
             }
         }
-        /// <summary>Returns a debug string for the creature.</summary>
+        #endregion
+
         public override string ToString()
-            => $"{{Name={Name}, HP={HitPoint}/{MaxHitPoint}, Attack={Attack?.Damage ?? UnarmedDamage}, Defense={Defense?.DefenseValue ?? 0}, Strategy={CombatStrategy?.GetType().Name}}}";
+            => $"{Name} HP:{HitPoint}/{MaxHitPoint} Pos({X},{Y}) Atk:{Attack?.Damage ?? UnarmedDamage} Def:{Defense?.DefenseValue ?? 0}";
     }
 }

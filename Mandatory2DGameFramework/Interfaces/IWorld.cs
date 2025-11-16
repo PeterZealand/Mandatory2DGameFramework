@@ -12,8 +12,8 @@ namespace Mandatory2DGameFramework.Interfaces
 {
     public interface IWorld
     {
-        int MaxX { get; set; }
-        int MaxY { get; set; }
+        int Width { get; set; }
+        int Height { get; set; }
         bool IsBlocked(int x, int y);
         void AddObject(IWorldObject obj);
         void RemoveObject(IWorldObject obj);

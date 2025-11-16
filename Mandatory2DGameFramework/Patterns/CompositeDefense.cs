@@ -36,7 +36,7 @@ namespace Mandatory2DGameFramework.Patterns
         //        return total;
         //    }
         //}
-        public int DefenseValue => _defenses.Sum(d => d.DefenseValue);
+        public virtual int DefenseValue => _defenses.Sum(d => d.DefenseValue);
 
         public virtual int ReduceDamage(int incoming)
         {

@@ -10,7 +10,7 @@ namespace Mandatory2DGameFramework.Interfaces
     /// <summary>
     /// Represents an object capable of movement within a world.
     /// </summary>
-    public interface IMove
+    public interface IMovable
     {
         /// <summary>
         /// Moves the object by the given delta values (dx, dy) within the provided world.

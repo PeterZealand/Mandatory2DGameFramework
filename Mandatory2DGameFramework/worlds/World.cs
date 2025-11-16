@@ -14,8 +14,8 @@ namespace Mandatory2DGameFramework.Worlds
     /// </summary>
     public class World : IWorld
     {
-        public int Width { get; }
-        public int Height { get; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
         public List<IWorldObject> WorldObjects { get; }
 
