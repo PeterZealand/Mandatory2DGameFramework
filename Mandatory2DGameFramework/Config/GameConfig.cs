@@ -20,23 +20,23 @@ namespace Mandatory2DGameFramework.Config
         private GameConfig()
         {
             // default værdier
-            MaxX = 25;
-            MaxY = 25;
+            Width = 25;
+            Hight = 25;
             Difficulty = DifficultyLevel.Medium;
         }
 
-        public int MaxX { get; set; }
-        public int MaxY { get; set; }
+        public int Width { get; set; }
+        public int Hight { get; set; }
         public DifficultyLevel Difficulty { get; set; }
 
         // sikring af at verdenen har en hvis strrelse
         public void Validate()
         {
-            if (MaxX <= 0) throw new InvalidOperationException($"{nameof(MaxX)} must be > 0");
-            if (MaxY <= 0) throw new InvalidOperationException($"{nameof(MaxY)} must be > 0");
+            if (Width <= 0) throw new InvalidOperationException($"{nameof(Width)} must be > 0");
+            if (Hight <= 0) throw new InvalidOperationException($"{nameof(Hight)} must be > 0");
         }
 
         public override string ToString()
-            => $"{{{nameof(MaxX)}={MaxX}, {nameof(MaxY)}={MaxY}, {nameof(Difficulty)}={Difficulty}}}";
+            => $"{{{nameof(Width)}={Width}, {nameof(Hight)}={Hight}, {nameof(Difficulty)}={Difficulty}}}";
     }
 }

@@ -32,10 +32,10 @@ namespace Mandatory2DGameFramework.Config
                 if (root == null) return cfg;
 
                 if (int.TryParse(root.SelectSingleNode("MaxX")?.InnerText.Trim(), out var maxX))
-                    cfg.MaxX = maxX;
+                    cfg.Hight = maxX;
 
                 if (int.TryParse(root.SelectSingleNode("MaxY")?.InnerText.Trim(), out var maxY))
-                    cfg.MaxY = maxY;
+                    cfg.Width = maxY;
 
                 var difficultyText = root.SelectSingleNode("Difficulty")?.InnerText.Trim();
                 if (difficultyText != null &&
