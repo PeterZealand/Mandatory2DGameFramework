@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mandatory2DGameFramework.Interfaces
 {
     /// <summary>Represents a creature in the world.</summary>
-    public interface ICreature : IWorldObject
+    public interface ICreature : IWorldObject, IPositionable
     {
         /// <summary>Base damage dealt when unarmed.</summary>
         int UnarmedDamage { get; set; }

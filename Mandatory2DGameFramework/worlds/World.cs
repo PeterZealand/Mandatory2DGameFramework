@@ -9,105 +9,133 @@ using System.Threading.Tasks;
 
 namespace Mandatory2DGameFramework.Worlds
 {
-    public abstract class World :IWorld
+    /// <summary>
+    /// Represents the game world and tracks all world objects.
+    /// </summary>
+    public class World : IWorld
     {
-        public int MaxX { get; set; }
-        public int MaxY { get; set; }
-        public List<IWorldObject> WorldObjects { get; } = new();
+        public int Width { get; }
+        public int Height { get; }
 
-        public World(int maxX, int maxY)
+        public List<IWorldObject> WorldObjects { get; }
+
+        public World(int width, int height)
         {
-            MaxX = maxX;
-            MaxY = maxY;
+            Width = width;
+            Height = height;
+            WorldObjects = new List<IWorldObject>();
         }
 
         /// <summary>
-        /// Checks if a coordinate is blocked (e.g. by a Wall).
+        /// Adds an object to the world if it does not violate collision rules.
         /// </summary>
-        public bool IsBlocked(int x, int y)
-        {
-            return WorldObjects.OfType<IPositionable>()
-                          .Any(o => o.X == x && o.Y == y && o is IImmovable);
-        }
-
         public void AddObject(IWorldObject obj)
         {
-            // Check for duplicates by name (using operator overload)
-            if (WorldObjects.Any(o => o == obj))
-            {
-                GameLogger.Instance.LogWarning($"Object '{obj.Name}' already exists in the world.");
-                return;
-            }
-
-            // Check for overlapping positions if applicable
             if (obj is IPositionable pos)
             {
-                bool occupied = WorldObjects
+                // Check for occupants in same cell
+                var existing = WorldObjects
                     .OfType<IPositionable>()
-                    .Any(o => o.X == pos.X && o.Y == pos.Y);
+                    .FirstOrDefault(o => o.X == pos.X && o.Y == pos.Y);
 
-                if (occupied)
+                if (existing != null)
                 {
-                    GameLogger.Instance.LogWarning(
-                        $"Cannot place '{obj.Name}' at ({pos.X}, {pos.Y}) — space already occupied."
-                    );
-                    return;
+                    // BLOCK: IImmovable objects cannot be shared
+                    if (existing is IImmovable)
+                    {
+                        GameLogger.Instance.LogWarning(
+                            $"Cannot place '{obj.Name}' at ({pos.X},{pos.Y}) — space is blocked by '{existing.Name}'."
+                        );
+                        return;
+                    }
                 }
             }
-
-            // Enforce immovable rules - commented out for now - dont think its needed or correct here
-            //if (obj is IImmovable)
-            //{
-            //    obj.Lootable = false;
-            //    obj.Removable = false;
-            //    GameLogger.Instance.LogInfo($"'{obj.Name}' is immovable and cannot be looted or removed.");
-            //}
 
             WorldObjects.Add(obj);
             GameLogger.Instance.LogInfo($"Added '{obj.Name}' to the world.");
         }
 
+        /// <summary>
+        /// Attempts to move a creature in the world.
+        /// </summary>
+        public bool MoveCreature(ICreature creature, int newX, int newY)
+        {
+            if (newX < 0 || newX >= Width || newY < 0 || newY >= Height)
+            {
+                GameLogger.Instance.LogWarning("Creature tried to move out of bounds.");
+                return false;
+            }
+
+            var occupant = WorldObjects
+                .OfType<IPositionable>()
+                .FirstOrDefault(o => o.X == newX && o.Y == newY);
+
+            if (occupant != null)
+            {
+                // BLOCK: IImmovable cannot be passed through
+                if (occupant is IImmovable)
+                {
+                    GameLogger.Instance.LogWarning(
+                        $"Cannot move into '{occupant.Name}' at ({newX},{newY}) — space is blocked."
+                    );
+                    return false;
+                }
+
+                // COMBAT: if another creature is here, they fight
+                if (occupant is ICreature otherCreature)
+                {
+                    GameLogger.Instance.LogInfo(
+                        $"{creature.Name} encountered {otherCreature.Name} at ({newX},{newY}). Combat begins!"
+                    );
+
+                    creature.Fight(otherCreature);
+
+                    // Remove defeated creatures
+                    if (otherCreature.HitPoint <= 0)
+                        WorldObjects.Remove(otherCreature);
+
+                    if (creature.HitPoint <= 0)
+                        WorldObjects.Remove(creature);
+
+                    return false;
+                }
+
+                // LOOT: lootable objects are removed after pickup
+                if (occupant is IWorldObject wo && wo.Lootable)
+                {
+                    GameLogger.Instance.LogInfo($"{creature.Name} picks up {wo.Name}.");
+                    WorldObjects.Remove(wo);
+                }
+            }
+
+            // Move the creature
+            if (creature is IPositionable movable)
+            {
+                movable.X = newX;
+                movable.Y = newY;
+                GameLogger.Instance.LogInfo($"{creature.Name} moved to ({newX},{newY}).");
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Removes an object if marked removable.
+        /// </summary>
         public void RemoveObject(IWorldObject obj)
         {
-            if (WorldObjects.Contains(obj))
+            if (obj.Removable)
             {
                 WorldObjects.Remove(obj);
                 GameLogger.Instance.LogInfo($"Removed '{obj.Name}' from the world.");
             }
+            else
+            {
+                GameLogger.Instance.LogWarning(
+                    $"Attempted to remove '{obj.Name}' but it is not removable."
+                );
+            }
         }
-
-        public override string ToString()
-        {
-            return $"{{{nameof(MaxX)}={MaxX.ToString()}, {nameof(MaxY)}={MaxY.ToString()}, ObjectsCount={WorldObjects.Count}}}";
-        }
-        //public int MaxX { get; set; }
-        //public int MaxY { get; set; }
-        //// world objects
-        //private List<WorldObject> _worldObjects;
-        //// world creatures
-        //private List<Creature> _creatures;
-
-        //public World(int maxX, int maxY)
-        //{
-        //    MaxX = maxX;
-        //    MaxY = maxY;
-        //    _worldObjects = new List<WorldObject>();
-        //    _creatures = new List<Creature>();
-        //}
-
-        //public void AddWorldObject(WorldObject obj)
-        //{
-        //    _worldObjects.Add(obj);
-        //}
-
-        //public void AddCreature(Creature creature)
-        //{
-        //    _creatures.Add(creature);
-        //}
-
-        //public override string ToString()
-        //{
-        //    return $"{{{nameof(MaxX)}={MaxX.ToString()}, {nameof(MaxY)}={MaxY.ToString()}}}";
-        //}
     }
 }
