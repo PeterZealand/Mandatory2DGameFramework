@@ -27,6 +27,6 @@ namespace Mandatory2DGameFramework.Patterns
         public abstract IImmovable CreateImmovableWorldObject();
 
         /// <summary>Create a world. Default implementation returns a basic derived World; override for terrain generation.</summary>
-        public abstract IWorld CreateWorld(int Width, int );
+        public abstract IWorld CreateWorld(int Width, int Hight);
     }
 }
