@@ -13,6 +13,6 @@ namespace Mandatory2DGameFramework.Interfaces
         IAttackItem CreateAttackItem();
         IDefenseItem CreateDefenseItem();
         IImmovable CreateImmovableWorldObject();
-        IWorld CreateWorld(int maxX, int maxY);
+        IWorld CreateWorld(int Width, int Height);
     }
 }
