@@ -4,6 +4,7 @@ using static Mandatory2DGameFramework.Patterns.GameLogger;
 using System.Collections.Generic;
 using Mandatory2DGameFramework.Interfaces;
 using Mandatory2DGameFramework.Models.CombatStrategies;
+using Mandatory2DGameFramework.Patterns;
 
 namespace Mandatory2DGameFramework.Models
 {
@@ -235,15 +236,35 @@ namespace Mandatory2DGameFramework.Models
 
             GameLogger.Instance.LogInfo($"{Name} engages {opponent.Name} in combat.");
 
-            // This creature attacks first
-            int myDamage = Hit(opponent);
-            opponent.ReceiveHit(myDamage);
+            int rounds = 0;
+            const int maxRounds = 1000; // safety guard
 
-            // If the opponent is still alive, it retaliates
-            if (opponent.HitPoint > 0)
+            while (HitPoint > 0 && opponent.HitPoint > 0 && rounds < maxRounds)
             {
-                int enemyDamage = opponent.Hit(this);
-                ReceiveHit(enemyDamage);
+                int myHpBefore = HitPoint;
+                int opHpBefore = opponent.HitPoint;
+
+                // This creature attacks first
+                int myDamage = Hit(opponent);
+                opponent.ReceiveHit(myDamage);
+                GamePacer.Current.Pause();
+
+                // If the opponent is still alive, it retaliates
+                if (opponent.HitPoint > 0)
+                {
+                    int enemyDamage = opponent.Hit(this);
+                    ReceiveHit(enemyDamage);
+                    GamePacer.Current.Pause();
+                }
+
+                // Stalemate protection (no HP changed this round)
+                if (HitPoint == myHpBefore && opponent.HitPoint == opHpBefore)
+                {
+                    GameLogger.Instance.LogWarning("Combat stalemate detected (no damage dealt this round). Aborting combat.");
+                    break;
+                }
+
+                rounds++;
             }
         }
         #endregion

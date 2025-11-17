@@ -112,7 +112,20 @@ namespace Mandatory2DGameFramework.Models
                     RemoveIfDefeated(creature);
                     RemoveIfDefeated(other);
 
-                    return false; // Combat consumes move
+                    // If opponent was removed and the mover survived, step onto the cell
+                    if (creature.HitPoint > 0 && !WorldObjects.Contains(other))
+                    {
+                        if (creature is IPositionable mover)
+                        {
+                            mover.X = newX;
+                            mover.Y = newY;
+                            GameLogger.Instance.LogInfo($"{creature.Name} moved onto ({newX},{newY}) after defeating {other.Name}.");
+                            GamePacer.Current.Pause();
+                            return true; // movement completed after victory
+                        }
+                    }
+
+                    return false; // combat consumed the turn (no movement)
                 }
 
                 // LOOTING
@@ -121,6 +134,7 @@ namespace Mandatory2DGameFramework.Models
                     GameLogger.Instance.LogInfo($"{creature.Name} loots '{wo.Name}'.");
                     creature.Loot(wo);
                     WorldObjects.Remove(wo);
+                    GamePacer.Current.Pause();
                 }
             }
 
@@ -130,6 +144,7 @@ namespace Mandatory2DGameFramework.Models
                 movable.X = newX;
                 movable.Y = newY;
                 GameLogger.Instance.LogInfo($"{creature.Name} moved to ({newX},{newY}).");
+                GamePacer.Current.Pause();
                 return true;
             }
 
