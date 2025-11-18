@@ -8,17 +8,20 @@ using Mandatory2DGameFramework.Models.CombatStrategies;
 
 namespace Mandatory2DGameFramework.Models
 {
-    // TODO consider how many attack / defense weapons are allowed (currently 1 of each for simplicity)
-    // TODO skal creature overhoved have Lootable ? skal setup refaktureres til at creature ikke er worldobject?
-    // TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som Hit osv?
-    // NOTE: This class acts as a template/root for concrete creatures (may be split for stricter SOLID later).
 
+    /// \class Mandatory2DGameFramework.Models.Creature
+    /// \brief Base creature that can attack, receive hits, loot items and notify observers.
     /// <summary>
     /// Base creature that can attack, receive hits, loot items and notify observers.
     /// Now DIP-compliant for combat behavior via <see cref="ICombatStrategyProvider"/> + <see cref="ICombatStrategy"/>.
     /// Framework creature implementation using only interfaces (no concrete class coupling).
     /// Handles intent (move / fight); delegates rule enforcement to <see cref="IWorld"/>.
     /// </summary>
+    /// 
+    // TODO consider how many attack / defense weapons are allowed (currently 1 of each for simplicity)
+    // TODO skal creature overhoved have Lootable ? skal setup refaktureres til at creature ikke er worldobject?
+    // TODO skal creatures metoder være virtual? så brugere af systemet kan override dem og lave deres egne creature metoder som Hit osv?
+    // NOTE: This class acts as a template/root for concrete creatures (may be split for stricter SOLID later).
     public abstract class Creature : IWorldObject, ICreature, IPositionable, IMovable
     {
         /// <summary>Current health points of the creature.</summary>
