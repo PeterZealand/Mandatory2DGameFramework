@@ -5,6 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>PetersMandatory2DGameFramework</PackageId>
+    <Title>2D Game Framework</Title>
+    <Description>2D Game Framework lerning experience.</Description>
   </PropertyGroup>
 
 </Project>

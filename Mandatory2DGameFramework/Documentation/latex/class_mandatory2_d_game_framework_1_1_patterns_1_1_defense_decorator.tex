@@ -1,0 +1,117 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator}{}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+
+
+Base decorator for dynamically enhancing defense items.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_affaf28bf4c0975720ffe0daf5334b069}{Reduce\+Damage}} (int incoming)
+\begin{DoxyCompactList}\small\item\em Returns the remaining damage after applying defense. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ae1d5278afca7bd4e41b84fbe026922cc}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ae1d5278afca7bd4e41b84fbe026922cc} 
+{\bfseries Defense\+Decorator} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} enchanted)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a2597b4079a4f9286f5b168cfb84d1b1f}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a2597b4079a4f9286f5b168cfb84d1b1f} 
+readonly \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} {\bfseries Enchanted}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ab4e330ee8a901d50e740a4b4c2ff3abe}{Defense\+Value}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Total defense value provided. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a7718a0c127d448bbd9f40f6875506064}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a347cacb9f49ee51510aa7c59deb11b1e}{Lootable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a08cb73406e94931e91f2a01886254cc2}{Removable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base decorator for dynamically enhancing defense items. 
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_affaf28bf4c0975720ffe0daf5334b069}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}!ReduceDamage@{ReduceDamage}}
+\index{ReduceDamage@{ReduceDamage}!Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+\doxysubsubsection{\texorpdfstring{ReduceDamage()}{ReduceDamage()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_affaf28bf4c0975720ffe0daf5334b069} 
+int Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator.\+Reduce\+Damage (\begin{DoxyParamCaption}\item[{int}]{incoming}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Returns the remaining damage after applying defense. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_add1d9e35146615e5a4512560ecc4fc56}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item}}.
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ab4e330ee8a901d50e740a4b4c2ff3abe}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}!DefenseValue@{DefenseValue}}
+\index{DefenseValue@{DefenseValue}!Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+\doxysubsubsection{\texorpdfstring{DefenseValue}{DefenseValue}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ab4e330ee8a901d50e740a4b4c2ff3abe} 
+virtual int Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator.\+Defense\+Value\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Total defense value provided. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_a2d3d9820a921f8142b1f033c42e69a8a}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a347cacb9f49ee51510aa7c59deb11b1e}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}!Lootable@{Lootable}}
+\index{Lootable@{Lootable}!Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+\doxysubsubsection{\texorpdfstring{Lootable}{Lootable}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a347cacb9f49ee51510aa7c59deb11b1e} 
+bool Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator.\+Lootable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a7718a0c127d448bbd9f40f6875506064}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}!Name@{Name}}
+\index{Name@{Name}!Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+\doxysubsubsection{\texorpdfstring{Name}{Name}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a7718a0c127d448bbd9f40f6875506064} 
+string Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator.\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a08cb73406e94931e91f2a01886254cc2}\index{Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}!Removable@{Removable}}
+\index{Removable@{Removable}!Mandatory2DGameFramework.Patterns.DefenseDecorator@{Mandatory2DGameFramework.Patterns.DefenseDecorator}}
+\doxysubsubsection{\texorpdfstring{Removable}{Removable}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_a08cb73406e94931e91f2a01886254cc2} 
+bool Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator.\+Removable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Patterns/Defense\+Decorator.\+cs\end{DoxyCompactItemize}

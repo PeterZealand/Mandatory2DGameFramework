@@ -1,0 +1,89 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory Interface Reference}
+\hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+
+
+Abstraction for creating framework objects. Users of the library can implement this to plug in custom creation logic (e.\+g. randomized stats, difficulty scaling, DI).  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_af013f043bd19621bcab785bb4273cba3}{Create\+Creature}} ()
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_attack_item}{IAttack\+Item}} \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a621d51a07660d23291e15d9edf76696d}{Create\+Attack\+Item}} ()
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a16068683f145bb62a245091f1e454226}{Create\+Defense\+Item}} ()
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_immovable}{IImmovable}} \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_afea0a7db4e535f9b2b278d20b55c63a0}{Create\+Immovable\+World\+Object}} ()
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}} \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a5206f115a677e3ec150ee6e859b475f2}{Create\+World}} (int Width, int Height)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstraction for creating framework objects. Users of the library can implement this to plug in custom creation logic (e.\+g. randomized stats, difficulty scaling, DI). 
+
+\label{doc-func-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a621d51a07660d23291e15d9edf76696d}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}!CreateAttackItem@{CreateAttackItem}}
+\index{CreateAttackItem@{CreateAttackItem}!Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateAttackItem()}{CreateAttackItem()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a621d51a07660d23291e15d9edf76696d} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_attack_item}{IAttack\+Item}} Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory.\+Create\+Attack\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a6137ad1986befd130c35bef16538e413}{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_af013f043bd19621bcab785bb4273cba3}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}!CreateCreature@{CreateCreature}}
+\index{CreateCreature@{CreateCreature}!Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateCreature()}{CreateCreature()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_af013f043bd19621bcab785bb4273cba3} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory.\+Create\+Creature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a59ce458b3df0aff3055663c933521f68}{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a16068683f145bb62a245091f1e454226}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}!CreateDefenseItem@{CreateDefenseItem}}
+\index{CreateDefenseItem@{CreateDefenseItem}!Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateDefenseItem()}{CreateDefenseItem()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a16068683f145bb62a245091f1e454226} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory.\+Create\+Defense\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a3bfcecf8acc13f7b5c3f7d872275961a}{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_afea0a7db4e535f9b2b278d20b55c63a0}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}!CreateImmovableWorldObject@{CreateImmovableWorldObject}}
+\index{CreateImmovableWorldObject@{CreateImmovableWorldObject}!Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateImmovableWorldObject()}{CreateImmovableWorldObject()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_afea0a7db4e535f9b2b278d20b55c63a0} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_immovable}{IImmovable}} Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory.\+Create\+Immovable\+World\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a4663cc93561a7a88dd92f26bd39b24c5}{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a5206f115a677e3ec150ee6e859b475f2}\index{Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}!CreateWorld@{CreateWorld}}
+\index{CreateWorld@{CreateWorld}!Mandatory2DGameFramework.Interfaces.IGameObjectFactory@{Mandatory2DGameFramework.Interfaces.IGameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateWorld()}{CreateWorld()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory_a5206f115a677e3ec150ee6e859b475f2} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}} Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory.\+Create\+World (\begin{DoxyParamCaption}\item[{int}]{Width}{, }\item[{int}]{Height}{}\end{DoxyParamCaption})}
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a567dedecb7805fc9b00206e72199b2f4}{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Interfaces/IGame\+Object\+Factory.\+cs\end{DoxyCompactItemize}

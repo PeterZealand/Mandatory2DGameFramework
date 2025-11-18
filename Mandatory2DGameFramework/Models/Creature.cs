@@ -4,7 +4,7 @@ using static Mandatory2DGameFramework.Patterns.GameLogger;
 using System.Collections.Generic;
 using Mandatory2DGameFramework.Interfaces;
 using Mandatory2DGameFramework.Models.CombatStrategies;
-using Mandatory2DGameFramework.Patterns;
+
 
 namespace Mandatory2DGameFramework.Models
 {

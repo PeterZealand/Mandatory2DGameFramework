@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['receivehit_0',['ReceiveHit',['../interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature.html#a0033cd7c2bc0eaa63caa634f3d0b65f5',1,'Mandatory2DGameFramework::Interfaces::ICreature']]],
+  ['reducedamage_1',['ReduceDamage',['../interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item.html#add1d9e35146615e5a4512560ecc4fc56',1,'Mandatory2DGameFramework.Interfaces.IDefenseItem.ReduceDamage()'],['../class_mandatory2_d_game_framework_1_1_models_1_1_defense_item.html#a0ff17b458d781106c7ed494a229bd3ed',1,'Mandatory2DGameFramework.Models.DefenseItem.ReduceDamage()'],['../class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense.html#a7e4decad60540642362637885a8c28cf',1,'Mandatory2DGameFramework.Patterns.CompositeDefense.ReduceDamage()'],['../class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator.html#affaf28bf4c0975720ffe0daf5334b069',1,'Mandatory2DGameFramework.Patterns.DefenseDecorator.ReduceDamage()']]],
+  ['removeobject_2',['RemoveObject',['../interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world.html#a6db4e0f724f6580004d190ee7a870801',1,'Mandatory2DGameFramework.Interfaces.IWorld.RemoveObject()'],['../class_mandatory2_d_game_framework_1_1_models_1_1_world.html#a3a562b12c820d68f4e91e06780bc1cfb',1,'Mandatory2DGameFramework.Models.World.RemoveObject()']]]
+];

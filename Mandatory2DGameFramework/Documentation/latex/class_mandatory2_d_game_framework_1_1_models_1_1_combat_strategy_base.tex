@@ -1,0 +1,85 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base}{}\label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base}\index{Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}}
+
+
+Base combat strategy (pass-\/through defaults).  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.140530cm]{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a5da88ca4202d5297653a53ea97624e95}{Calculate\+Attack\+Power}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, int base\+Damage)
+\begin{DoxyCompactList}\small\item\em Given creature and base damage (weapon or unarmed), returns final attack power. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a8e5252653d5bc40c26de923c253466ec}{Calculate\+Damage\+Taken}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, int incoming\+Damage)
+\begin{DoxyCompactList}\small\item\em Given post-\/defense incoming damage, returns final damage taken. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a1674807c7648d6631fce7decf927c7fa}{On\+Combat\+End}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature)
+\begin{DoxyCompactList}\small\item\em Hook called after a combat exchange. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base combat strategy (pass-\/through defaults). 
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a5da88ca4202d5297653a53ea97624e95}\index{Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}!CalculateAttackPower@{CalculateAttackPower}}
+\index{CalculateAttackPower@{CalculateAttackPower}!Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}}
+\doxysubsubsection{\texorpdfstring{CalculateAttackPower()}{CalculateAttackPower()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a5da88ca4202d5297653a53ea97624e95} 
+virtual int Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base.\+Calculate\+Attack\+Power (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{int}]{base\+Damage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Given creature and base damage (weapon or unarmed), returns final attack power. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_adbb45b414ec54fe9e0a8779bc25b2a7f}{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_defensive_combat_strategy_a8cf04da166f1b2668b7cd5d8d943e380}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Defensive\+Combat\+Strategy}}, and \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_weakened_combat_strategy_a2c08860ef7faf41c8e80c665acd97d8b}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Weakened\+Combat\+Strategy}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a8e5252653d5bc40c26de923c253466ec}\index{Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}!CalculateDamageTaken@{CalculateDamageTaken}}
+\index{CalculateDamageTaken@{CalculateDamageTaken}!Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}}
+\doxysubsubsection{\texorpdfstring{CalculateDamageTaken()}{CalculateDamageTaken()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a8e5252653d5bc40c26de923c253466ec} 
+virtual int Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base.\+Calculate\+Damage\+Taken (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{int}]{incoming\+Damage}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Given post-\/defense incoming damage, returns final damage taken. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_aad3697b0fd387e9fb3032ebc3403dfab}{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_defensive_combat_strategy_aceeea41da44628c175db588db4142762}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Defensive\+Combat\+Strategy}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a1674807c7648d6631fce7decf927c7fa}\index{Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}!OnCombatEnd@{OnCombatEnd}}
+\index{OnCombatEnd@{OnCombatEnd}!Mandatory2DGameFramework.Models.CombatStrategyBase@{Mandatory2DGameFramework.Models.CombatStrategyBase}}
+\doxysubsubsection{\texorpdfstring{OnCombatEnd()}{OnCombatEnd()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a1674807c7648d6631fce7decf927c7fa} 
+virtual void Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base.\+On\+Combat\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Hook called after a combat exchange. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_a102abae5c0b71277c7d7deab35b1f12d}{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Models/Combat\+Strategy\+Base.\+cs\end{DoxyCompactItemize}

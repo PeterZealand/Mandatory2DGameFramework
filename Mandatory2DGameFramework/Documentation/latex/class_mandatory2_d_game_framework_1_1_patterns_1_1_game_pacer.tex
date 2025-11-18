@@ -1,0 +1,88 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Pacer Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer}{}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer}\index{Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}}
+
+
+Default pacer. Assign a custom implementation to Current to override globally.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Pacer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a88f6265542fa21127b7f911374870029}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Blocking pause suitable for console demos. \end{DoxyCompactList}\item 
+Task \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_aa56c58bfd929adce00c48f1cf6852536}{Pause\+Async}} (Cancellation\+Token ct=default)
+\begin{DoxyCompactList}\small\item\em Async-\/friendly pause. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a8959dc682ab2236e5ae7616d8f39c60a}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a8959dc682ab2236e5ae7616d8f39c60a} 
+static \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_pacer}{IPacer}} {\bfseries Current}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a52ba5228ab8ca568ab7760afc2fb2950}{Delay\+Milliseconds}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Milliseconds to pause after an action. 0 = no delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Default pacer. Assign a custom implementation to Current to override globally. 
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a88f6265542fa21127b7f911374870029}\index{Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}!Pause@{Pause}}
+\index{Pause@{Pause}!Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a88f6265542fa21127b7f911374870029} 
+void Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Pacer.\+Pause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Blocking pause suitable for console demos. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_pacer_a10f468ac3e691c5592f7251f0fd8d631}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IPacer}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_aa56c58bfd929adce00c48f1cf6852536}\index{Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}!PauseAsync@{PauseAsync}}
+\index{PauseAsync@{PauseAsync}!Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}}
+\doxysubsubsection{\texorpdfstring{PauseAsync()}{PauseAsync()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_aa56c58bfd929adce00c48f1cf6852536} 
+Task Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Pacer.\+Pause\+Async (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{ct}{ = {\ttfamily default}}\end{DoxyParamCaption})}
+
+
+
+Async-\/friendly pause. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_pacer_a4abdac84218320a4f7081c37b07f5798}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IPacer}}.
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a52ba5228ab8ca568ab7760afc2fb2950}\index{Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}!DelayMilliseconds@{DelayMilliseconds}}
+\index{DelayMilliseconds@{DelayMilliseconds}!Mandatory2DGameFramework.Patterns.GamePacer@{Mandatory2DGameFramework.Patterns.GamePacer}}
+\doxysubsubsection{\texorpdfstring{DelayMilliseconds}{DelayMilliseconds}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_pacer_a52ba5228ab8ca568ab7760afc2fb2950} 
+int Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Pacer.\+Delay\+Milliseconds = 0\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Milliseconds to pause after an action. 0 = no delay. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_pacer_afc9c79c8bfae4c42ca9ebfa68a95d328}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IPacer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Patterns/Game\+Pacer.\+cs\end{DoxyCompactItemize}

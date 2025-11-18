@@ -1,0 +1,78 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item Interface Reference}
+\hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}\index{Mandatory2DGameFramework.Interfaces.IDefenseItem@{Mandatory2DGameFramework.Interfaces.IDefenseItem}}
+
+
+Represents an item that reduces incoming damage.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.595442cm]{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_add1d9e35146615e5a4512560ecc4fc56}{Reduce\+Damage}} (int incoming)
+\begin{DoxyCompactList}\small\item\em Returns the remaining damage after applying defense. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_a2d3d9820a921f8142b1f033c42e69a8a}{Defense\+Value}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Total defense value provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool {\bfseries Lootable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool {\bfseries Removable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an item that reduces incoming damage. 
+
+\label{doc-func-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_add1d9e35146615e5a4512560ecc4fc56}\index{Mandatory2DGameFramework.Interfaces.IDefenseItem@{Mandatory2DGameFramework.Interfaces.IDefenseItem}!ReduceDamage@{ReduceDamage}}
+\index{ReduceDamage@{ReduceDamage}!Mandatory2DGameFramework.Interfaces.IDefenseItem@{Mandatory2DGameFramework.Interfaces.IDefenseItem}}
+\doxysubsubsection{\texorpdfstring{ReduceDamage()}{ReduceDamage()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_add1d9e35146615e5a4512560ecc4fc56} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item.\+Reduce\+Damage (\begin{DoxyParamCaption}\item[{int}]{incoming}{}\end{DoxyParamCaption})}
+
+
+
+Returns the remaining damage after applying defense. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_defense_item_a0ff17b458d781106c7ed494a229bd3ed}{Mandatory2\+DGame\+Framework.\+Models.\+Defense\+Item}}, \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e4decad60540642362637885a8c28cf}{Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense}}, and \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_affaf28bf4c0975720ffe0daf5334b069}{Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator}}.
+
+
+
+\label{doc-property-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_a2d3d9820a921f8142b1f033c42e69a8a}\index{Mandatory2DGameFramework.Interfaces.IDefenseItem@{Mandatory2DGameFramework.Interfaces.IDefenseItem}!DefenseValue@{DefenseValue}}
+\index{DefenseValue@{DefenseValue}!Mandatory2DGameFramework.Interfaces.IDefenseItem@{Mandatory2DGameFramework.Interfaces.IDefenseItem}}
+\doxysubsubsection{\texorpdfstring{DefenseValue}{DefenseValue}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_a2d3d9820a921f8142b1f033c42e69a8a} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item.\+Defense\+Value\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Total defense value provided. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_defense_item_a010e0920a3d3d9206eca058359957ac8}{Mandatory2\+DGame\+Framework.\+Models.\+Defense\+Item}}, \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_af9fb17741983c107c26a32e8ba770f41}{Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense}}, and \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_defense_decorator_ab4e330ee8a901d50e740a4b4c2ff3abe}{Mandatory2\+DGame\+Framework.\+Patterns.\+Defense\+Decorator}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Interfaces/IDefense\+Item.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,31 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces Namespace Reference}
+\hypertarget{namespace_mandatory2_d_game_framework_1_1_interfaces}{}\label{namespace_mandatory2_d_game_framework_1_1_interfaces}\index{Mandatory2DGameFramework.Interfaces@{Mandatory2DGameFramework.Interfaces}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_attack_item}{IAttack\+Item}}
+\begin{DoxyCompactList}\small\item\em Represents an item that can deal damage. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}}
+\begin{DoxyCompactList}\small\item\em DIP abstraction for combat behavior. Uses \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature} to avoid concrete coupling. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_provider}{ICombat\+Strategy\+Provider}}
+\begin{DoxyCompactList}\small\item\em Provides the proper combat strategy for the given creature and its current health ratio. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}
+\begin{DoxyCompactList}\small\item\em Represents a creature in the world. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_observer}{ICreature\+Observer}}
+\begin{DoxyCompactList}\small\item\em Observer notified when a creature takes damage. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}}
+\begin{DoxyCompactList}\small\item\em Represents an item that reduces incoming damage. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{IGame\+Object\+Factory}}
+\begin{DoxyCompactList}\small\item\em Abstraction for creating framework objects. Users of the library can implement this to plug in custom creation logic (e.\+g. randomized stats, difficulty scaling, DI). \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_immovable}{IImmovable}}
+\begin{DoxyCompactList}\small\item\em Marker interface for world objects that cannot be moved. Inherit from \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object} (+ \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_positionable}{IPositionable} if they have coordinates) so an immovable can be passed directly to methods expecting \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_movable}{IMovable}}
+\begin{DoxyCompactList}\small\item\em Represents an object capable of movement within a world. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_pacer}{IPacer}}
+\begin{DoxyCompactList}\small\item\em Abstraction for pacing game actions (e.\+g., delays between logs/steps). \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_positionable}{IPositionable}}
+\begin{DoxyCompactList}\small\item\em Object with world coordinates. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}}
+\begin{DoxyCompactList}\small\item\em Represents a game world that manages objects and enforces rules such as bounds, collisions, combat and looting. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}}
+\begin{DoxyCompactList}\small\item\em Base contract for all objects existing in the world. \end{DoxyCompactList}\end{DoxyCompactItemize}

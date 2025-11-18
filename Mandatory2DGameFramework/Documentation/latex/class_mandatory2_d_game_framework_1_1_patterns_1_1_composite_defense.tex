@@ -1,0 +1,114 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense}{}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+
+
+Combines multiple Idefense\+Item objects into one logical defense unit.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_ac278bcc353ce087e366682d8878b4d61}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_ac278bcc353ce087e366682d8878b4d61} 
+virtual void {\bfseries Add} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} defense)
+\item 
+virtual int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e4decad60540642362637885a8c28cf}{Reduce\+Damage}} (int incoming)
+\begin{DoxyCompactList}\small\item\em Returns the remaining damage after applying defense. \end{DoxyCompactList}\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a12473ad449f83f9567cc1087cc97b1a8}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a12473ad449f83f9567cc1087cc97b1a8} 
+override string {\bfseries To\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a9a80193e788b6d0c1463b459ee729dc0}{Name}} = "{}Composite Defense"{}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a68dec0ae5226b626e8bd49484b01cc5d}{Lootable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a1412385fecfcb7a4fbe3bb1fad1a429b}{Removable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e3d03c47145183e25cd48cd1d9b3bb7}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e3d03c47145183e25cd48cd1d9b3bb7} 
+IRead\+Only\+List$<$ \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} $>$ {\bfseries Items}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+virtual int \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_af9fb17741983c107c26a32e8ba770f41}{Defense\+Value}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Total defense value provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Combines multiple Idefense\+Item objects into one logical defense unit. 
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e4decad60540642362637885a8c28cf}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}!ReduceDamage@{ReduceDamage}}
+\index{ReduceDamage@{ReduceDamage}!Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+\doxysubsubsection{\texorpdfstring{ReduceDamage()}{ReduceDamage()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a7e4decad60540642362637885a8c28cf} 
+virtual int Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense.\+Reduce\+Damage (\begin{DoxyParamCaption}\item[{int}]{incoming}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns the remaining damage after applying defense. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_add1d9e35146615e5a4512560ecc4fc56}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item}}.
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_af9fb17741983c107c26a32e8ba770f41}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}!DefenseValue@{DefenseValue}}
+\index{DefenseValue@{DefenseValue}!Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+\doxysubsubsection{\texorpdfstring{DefenseValue}{DefenseValue}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_af9fb17741983c107c26a32e8ba770f41} 
+virtual int Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense.\+Defense\+Value\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Total defense value provided. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item_a2d3d9820a921f8142b1f033c42e69a8a}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IDefense\+Item}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a68dec0ae5226b626e8bd49484b01cc5d}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}!Lootable@{Lootable}}
+\index{Lootable@{Lootable}!Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+\doxysubsubsection{\texorpdfstring{Lootable}{Lootable}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a68dec0ae5226b626e8bd49484b01cc5d} 
+bool Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense.\+Lootable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a9a80193e788b6d0c1463b459ee729dc0}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}!Name@{Name}}
+\index{Name@{Name}!Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+\doxysubsubsection{\texorpdfstring{Name}{Name}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a9a80193e788b6d0c1463b459ee729dc0} 
+string Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense.\+Name = "{}Composite Defense"{}\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a1412385fecfcb7a4fbe3bb1fad1a429b}\index{Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}!Removable@{Removable}}
+\index{Removable@{Removable}!Mandatory2DGameFramework.Patterns.CompositeDefense@{Mandatory2DGameFramework.Patterns.CompositeDefense}}
+\doxysubsubsection{\texorpdfstring{Removable}{Removable}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_composite_defense_a1412385fecfcb7a4fbe3bb1fad1a429b} 
+bool Mandatory2\+DGame\+Framework.\+Patterns.\+Composite\+Defense.\+Removable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Patterns/Composite\+Defense.\+cs\end{DoxyCompactItemize}

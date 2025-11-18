@@ -1,0 +1,77 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy Interface Reference}
+\hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}\index{Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}}
+
+
+DIP abstraction for combat behavior. Uses \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature} to avoid concrete coupling.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.684318cm]{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_adbb45b414ec54fe9e0a8779bc25b2a7f}{Calculate\+Attack\+Power}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, int base\+Damage)
+\begin{DoxyCompactList}\small\item\em Given creature and base damage (weapon or unarmed), returns final attack power. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_aad3697b0fd387e9fb3032ebc3403dfab}{Calculate\+Damage\+Taken}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, int incoming\+Damage)
+\begin{DoxyCompactList}\small\item\em Given post-\/defense incoming damage, returns final damage taken. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_a102abae5c0b71277c7d7deab35b1f12d}{On\+Combat\+End}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature)
+\begin{DoxyCompactList}\small\item\em Hook called after a combat exchange. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+DIP abstraction for combat behavior. Uses \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature} to avoid concrete coupling. 
+
+\label{doc-func-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_adbb45b414ec54fe9e0a8779bc25b2a7f}\index{Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}!CalculateAttackPower@{CalculateAttackPower}}
+\index{CalculateAttackPower@{CalculateAttackPower}!Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}}
+\doxysubsubsection{\texorpdfstring{CalculateAttackPower()}{CalculateAttackPower()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_adbb45b414ec54fe9e0a8779bc25b2a7f} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy.\+Calculate\+Attack\+Power (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{int}]{base\+Damage}{}\end{DoxyParamCaption})}
+
+
+
+Given creature and base damage (weapon or unarmed), returns final attack power. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_defensive_combat_strategy_a8cf04da166f1b2668b7cd5d8d943e380}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Defensive\+Combat\+Strategy}}, \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_weakened_combat_strategy_a2c08860ef7faf41c8e80c665acd97d8b}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Weakened\+Combat\+Strategy}}, and \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a5da88ca4202d5297653a53ea97624e95}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_aad3697b0fd387e9fb3032ebc3403dfab}\index{Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}!CalculateDamageTaken@{CalculateDamageTaken}}
+\index{CalculateDamageTaken@{CalculateDamageTaken}!Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}}
+\doxysubsubsection{\texorpdfstring{CalculateDamageTaken()}{CalculateDamageTaken()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_aad3697b0fd387e9fb3032ebc3403dfab} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy.\+Calculate\+Damage\+Taken (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{int}]{incoming\+Damage}{}\end{DoxyParamCaption})}
+
+
+
+Given post-\/defense incoming damage, returns final damage taken. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_defensive_combat_strategy_aceeea41da44628c175db588db4142762}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Defensive\+Combat\+Strategy}}, and \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a8e5252653d5bc40c26de923c253466ec}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_a102abae5c0b71277c7d7deab35b1f12d}\index{Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}!OnCombatEnd@{OnCombatEnd}}
+\index{OnCombatEnd@{OnCombatEnd}!Mandatory2DGameFramework.Interfaces.ICombatStrategy@{Mandatory2DGameFramework.Interfaces.ICombatStrategy}}
+\doxysubsubsection{\texorpdfstring{OnCombatEnd()}{OnCombatEnd()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_a102abae5c0b71277c7d7deab35b1f12d} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy.\+On\+Combat\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{}\end{DoxyParamCaption})}
+
+
+
+Hook called after a combat exchange. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategy_base_a1674807c7648d6631fce7decf927c7fa}{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategy\+Base}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Interfaces/ICombat\+Strategy.\+cs\end{DoxyCompactItemize}

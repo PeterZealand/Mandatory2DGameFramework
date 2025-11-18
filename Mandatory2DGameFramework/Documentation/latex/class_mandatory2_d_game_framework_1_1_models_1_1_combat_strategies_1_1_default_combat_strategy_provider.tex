@@ -1,0 +1,57 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Default\+Combat\+Strategy\+Provider Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider}{}\label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider}\index{Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider@{Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider}}
+
+
+Strategy provider with injectable strategies and thresholds. health\+Ratio thresholds\+: \texorpdfstring{$>$}{>} weakened\+Threshold =\texorpdfstring{$>$}{>} optimal,.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Default\+Combat\+Strategy\+Provider\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_ab6781638d21910cd713354a625a70d0a}\label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_ab6781638d21910cd713354a625a70d0a} 
+{\bfseries Default\+Combat\+Strategy\+Provider} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}} optimal, \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}} weakened, \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}} defensive, double weakened\+Threshold=0.\+60, double defensive\+Threshold=0.\+30)
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_a1103d2c487e89d948341414ece8a212e}{Select}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, double health\+Ratio)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Strategy provider with injectable strategies and thresholds. health\+Ratio thresholds\+: \texorpdfstring{$>$}{>} weakened\+Threshold =\texorpdfstring{$>$}{>} optimal,. 
+
+\begin{quote}
+defensive\+Threshold =\texorpdfstring{$>$}{>} weakened, else defensive.
+
+\end{quote}
+
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_a1103d2c487e89d948341414ece8a212e}\index{Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider@{Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider}!Select@{Select}}
+\index{Select@{Select}!Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider@{Mandatory2DGameFramework.Models.CombatStrategies.DefaultCombatStrategyProvider}}
+\doxysubsubsection{\texorpdfstring{Select()}{Select()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_models_1_1_combat_strategies_1_1_default_combat_strategy_provider_a1103d2c487e89d948341414ece8a212e} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy}{ICombat\+Strategy}} Mandatory2\+DGame\+Framework.\+Models.\+Combat\+Strategies.\+Default\+Combat\+Strategy\+Provider.\+Select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{double}]{health\+Ratio}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em creature} & The creature needing a strategy.\\
+\hline
+{\em health\+Ratio} & A value between 0 and 100 (current HP / max HP).\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_combat_strategy_provider_a4ad09ea66c0cd60847cb9432ad9c267c}{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICombat\+Strategy\+Provider}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Models/\+Combat\+Strategies/Default\+Combat\+Strategy\+Provider.\+cs\end{DoxyCompactItemize}

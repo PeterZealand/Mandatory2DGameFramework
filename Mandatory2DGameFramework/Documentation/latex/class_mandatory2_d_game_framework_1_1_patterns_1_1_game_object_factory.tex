@@ -1,0 +1,109 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory Class Reference}
+\hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory}{}\label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+
+
+Base factory implementing \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{IGame\+Object\+Factory}. Extend this abstract class or implement the interface directly to customize object creation.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a59ce458b3df0aff3055663c933521f68}{Create\+Creature}} ()
+\begin{DoxyCompactList}\small\item\em Create a creature instance (override for custom stats). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_attack_item}{IAttack\+Item}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a6137ad1986befd130c35bef16538e413}{Create\+Attack\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Create an attack item (override for custom stats). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a3bfcecf8acc13f7b5c3f7d872275961a}{Create\+Defense\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Create a defense item (override for custom stats). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_immovable}{IImmovable}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a4663cc93561a7a88dd92f26bd39b24c5}{Create\+Immovable\+World\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Create an immovable world object (e.\+g. wall, obstacle). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}} \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a567dedecb7805fc9b00206e72199b2f4}{Create\+World}} (int Width, int Hight)
+\begin{DoxyCompactList}\small\item\em Create a world. Default implementation returns a basic derived \doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World}; override for terrain generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base factory implementing \doxylink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{IGame\+Object\+Factory}. Extend this abstract class or implement the interface directly to customize object creation. 
+
+\label{doc-func-members}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a6137ad1986befd130c35bef16538e413}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}!CreateAttackItem@{CreateAttackItem}}
+\index{CreateAttackItem@{CreateAttackItem}!Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateAttackItem()}{CreateAttackItem()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a6137ad1986befd130c35bef16538e413} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_attack_item}{IAttack\+Item}} Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory.\+Create\+Attack\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Create an attack item (override for custom stats). 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a59ce458b3df0aff3055663c933521f68}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}!CreateCreature@{CreateCreature}}
+\index{CreateCreature@{CreateCreature}!Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateCreature()}{CreateCreature()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a59ce458b3df0aff3055663c933521f68} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory.\+Create\+Creature (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Create a creature instance (override for custom stats). 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a3bfcecf8acc13f7b5c3f7d872275961a}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}!CreateDefenseItem@{CreateDefenseItem}}
+\index{CreateDefenseItem@{CreateDefenseItem}!Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateDefenseItem()}{CreateDefenseItem()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a3bfcecf8acc13f7b5c3f7d872275961a} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_defense_item}{IDefense\+Item}} Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory.\+Create\+Defense\+Item (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Create a defense item (override for custom stats). 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a4663cc93561a7a88dd92f26bd39b24c5}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}!CreateImmovableWorldObject@{CreateImmovableWorldObject}}
+\index{CreateImmovableWorldObject@{CreateImmovableWorldObject}!Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateImmovableWorldObject()}{CreateImmovableWorldObject()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a4663cc93561a7a88dd92f26bd39b24c5} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_immovable}{IImmovable}} Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory.\+Create\+Immovable\+World\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Create an immovable world object (e.\+g. wall, obstacle). 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory}}.
+
+\Hypertarget{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a567dedecb7805fc9b00206e72199b2f4}\index{Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}!CreateWorld@{CreateWorld}}
+\index{CreateWorld@{CreateWorld}!Mandatory2DGameFramework.Patterns.GameObjectFactory@{Mandatory2DGameFramework.Patterns.GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{CreateWorld()}{CreateWorld()}}
+{\footnotesize\ttfamily \label{class_mandatory2_d_game_framework_1_1_patterns_1_1_game_object_factory_a567dedecb7805fc9b00206e72199b2f4} 
+\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}} Mandatory2\+DGame\+Framework.\+Patterns.\+Game\+Object\+Factory.\+Create\+World (\begin{DoxyParamCaption}\item[{int}]{Width}{, }\item[{int}]{Hight}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Create a world. Default implementation returns a basic derived \doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World}; override for terrain generation. 
+
+
+
+Implements \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_game_object_factory}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IGame\+Object\+Factory}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Patterns/Game\+Object\+Factory.\+cs\end{DoxyCompactItemize}

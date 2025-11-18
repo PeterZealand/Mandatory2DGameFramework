@@ -1,0 +1,161 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld Interface Reference}
+\hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+
+
+Represents a game world that manages objects and enforces rules such as bounds, collisions, combat and looting.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a026476258aff59772359ec68440720ed}{Add\+Object}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}} obj)
+\begin{DoxyCompactList}\small\item\em Adds an object to the world if placement rules allow it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a6db4e0f724f6580004d190ee7a870801}{Remove\+Object}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}} obj)
+\begin{DoxyCompactList}\small\item\em Removes an object if it is marked removable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a1b11dcc9cdcbf511bbbabcd85db67f6a}{Is\+Blocked}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Returns true if the given coordinate is blocked by an immovable object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a7aaa86fe45e9936777ea34288028beaf}{Move\+Creature}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} creature, int newX, int newY)
+\begin{DoxyCompactList}\small\item\em Unified resolution of movement, combat and looting. Returns true only if the creature ends its turn in the new cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a66887e6c535c6d25254ee7a99d5aa9ee}{Width}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World} width (X max exclusive). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a738a650db8f4e71fcafecdf7fbcc5e40}{Height}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World} height (Y max exclusive). \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}} $>$ \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_afc16d5fbee318615c57b4a54f85d9a92}{World\+Objects}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em All world objects (creatures, items, immovables). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a game world that manages objects and enforces rules such as bounds, collisions, combat and looting. 
+
+\label{doc-func-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a026476258aff59772359ec68440720ed}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!AddObject@{AddObject}}
+\index{AddObject@{AddObject}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{AddObject()}{AddObject()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a026476258aff59772359ec68440720ed} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Add\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}}}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Adds an object to the world if placement rules allow it. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_a6ed53ae2dfb1e0870df0512c8e86cd92}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a1b11dcc9cdcbf511bbbabcd85db67f6a}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!IsBlocked@{IsBlocked}}
+\index{IsBlocked@{IsBlocked}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{IsBlocked()}{IsBlocked()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a1b11dcc9cdcbf511bbbabcd85db67f6a} 
+bool Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Is\+Blocked (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Returns true if the given coordinate is blocked by an immovable object. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_ad3dec4262bab95db93bcbdd4ab82ef60}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a7aaa86fe45e9936777ea34288028beaf}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!MoveCreature@{MoveCreature}}
+\index{MoveCreature@{MoveCreature}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{MoveCreature()}{MoveCreature()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a7aaa86fe45e9936777ea34288028beaf} 
+bool Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Move\+Creature (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{creature}{, }\item[{int}]{newX}{, }\item[{int}]{newY}{}\end{DoxyParamCaption})}
+
+
+
+Unified resolution of movement, combat and looting. Returns true only if the creature ends its turn in the new cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em creature} & The creature attempting to move.\\
+\hline
+{\em newX} & Target X coordinate.\\
+\hline
+{\em newY} & Target Y coordinate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the creature ended up in the new cell (pure movement), false if blocked or consumed by combat.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_a040a172f4a8310c2337d09e9f57760c4}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a6db4e0f724f6580004d190ee7a870801}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!RemoveObject@{RemoveObject}}
+\index{RemoveObject@{RemoveObject}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{RemoveObject()}{RemoveObject()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a6db4e0f724f6580004d190ee7a870801} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Remove\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}}}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Removes an object if it is marked removable. 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_a3a562b12c820d68f4e91e06780bc1cfb}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+
+
+\label{doc-property-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a738a650db8f4e71fcafecdf7fbcc5e40}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!Height@{Height}}
+\index{Height@{Height}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{Height}{Height}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a738a650db8f4e71fcafecdf7fbcc5e40} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Height\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+\doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World} height (Y max exclusive). 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_a4291d868962ef624a0d970a0dda5bfb7}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a66887e6c535c6d25254ee7a99d5aa9ee}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!Width@{Width}}
+\index{Width@{Width}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{Width}{Width}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_a66887e6c535c6d25254ee7a99d5aa9ee} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+Width\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+\doxylink{class_mandatory2_d_game_framework_1_1_models_1_1_world}{World} width (X max exclusive). 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_a6996ef71f01ea114bb994e8a1060519e}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_afc16d5fbee318615c57b4a54f85d9a92}\index{Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}!WorldObjects@{WorldObjects}}
+\index{WorldObjects@{WorldObjects}!Mandatory2DGameFramework.Interfaces.IWorld@{Mandatory2DGameFramework.Interfaces.IWorld}}
+\doxysubsubsection{\texorpdfstring{WorldObjects}{WorldObjects}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_afc16d5fbee318615c57b4a54f85d9a92} 
+List$<$\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}}$>$ Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld.\+World\+Objects\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+All world objects (creatures, items, immovables). 
+
+
+
+Implemented in \mbox{\hyperlink{class_mandatory2_d_game_framework_1_1_models_1_1_world_aae054b5a4884de21432c24975606650e}{Mandatory2\+DGame\+Framework.\+Models.\+World}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Interfaces/IWorld.\+cs\end{DoxyCompactItemize}

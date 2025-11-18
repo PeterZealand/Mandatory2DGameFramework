@@ -1,0 +1,146 @@
+\doxysection{Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature Interface Reference}
+\hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+
+
+Represents a creature in the world.  
+
+
+Inheritance diagram for Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.702128cm]{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a626399da9e5ee011e6df1d3a5ef0fb99}{Move}} (int dx, int dy, \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}} world)
+\begin{DoxyCompactList}\small\item\em Attempts to move the creature by (dx, dy) within the given world. The world is responsible for enforcing bounds, collisions, combat and looting. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a4379d8b7445b07d9b4a74039648c583c}{Hit}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} target)
+\begin{DoxyCompactList}\small\item\em Calculates outgoing attack damage against a target creature, typically using its current combat strategy and equipment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a0033cd7c2bc0eaa63caa634f3d0b65f5}{Receive\+Hit}} (int hit)
+\begin{DoxyCompactList}\small\item\em Applies incoming damage to this creature, including defense and combat strategy effects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a5c8f58b33d729b6f8d0c9a99b3950fb2}{Fight}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}} opponent)
+\begin{DoxyCompactList}\small\item\em Performs a combat exchange with another creature (e.\+g. attack and possible retaliation). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_aa42749cbd47786cecd53e71256909351}{Loot}} (\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}} obj)
+\begin{DoxyCompactList}\small\item\em Attempts to loot and possibly equip items from a world object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_ad850f6e2971e734abc5faf94c96d9246}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_ad850f6e2971e734abc5faf94c96d9246} 
+int {\bfseries Unarmed\+Damage}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Base damage dealt when unarmed. \end{DoxyCompactList}\item 
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a5e64a8e30779fb14ab68719ca9402754}\label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a5e64a8e30779fb14ab68719ca9402754} 
+int {\bfseries Hit\+Point}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Current hit points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IWorld\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries Name}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool {\bfseries Lootable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool {\bfseries Removable}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties inherited from \mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_positionable}{Mandatory2\+DGame\+Framework.\+Interfaces.\+IPositionable}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries X}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+int {\bfseries Y}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a creature in the world. 
+
+\label{doc-func-members}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a5c8f58b33d729b6f8d0c9a99b3950fb2}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}!Fight@{Fight}}
+\index{Fight@{Fight}!Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+\doxysubsubsection{\texorpdfstring{Fight()}{Fight()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a5c8f58b33d729b6f8d0c9a99b3950fb2} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature.\+Fight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{opponent}{}\end{DoxyParamCaption})}
+
+
+
+Performs a combat exchange with another creature (e.\+g. attack and possible retaliation). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opponent} & The opponent creature.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a4379d8b7445b07d9b4a74039648c583c}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}!Hit@{Hit}}
+\index{Hit@{Hit}!Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+\doxysubsubsection{\texorpdfstring{Hit()}{Hit()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a4379d8b7445b07d9b4a74039648c583c} 
+int Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature.\+Hit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature}{ICreature}}}]{target}{}\end{DoxyParamCaption})}
+
+
+
+Calculates outgoing attack damage against a target creature, typically using its current combat strategy and equipment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The creature being attacked.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Final attack power.
+\end{DoxyReturn}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_aa42749cbd47786cecd53e71256909351}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}!Loot@{Loot}}
+\index{Loot@{Loot}!Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+\doxysubsubsection{\texorpdfstring{Loot()}{Loot()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_aa42749cbd47786cecd53e71256909351} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature.\+Loot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world_object}{IWorld\+Object}}}]{obj}{}\end{DoxyParamCaption})}
+
+
+
+Attempts to loot and possibly equip items from a world object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & World object to loot.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a626399da9e5ee011e6df1d3a5ef0fb99}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}!Move@{Move}}
+\index{Move@{Move}!Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a626399da9e5ee011e6df1d3a5ef0fb99} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature.\+Move (\begin{DoxyParamCaption}\item[{int}]{dx}{, }\item[{int}]{dy}{, }\item[{\mbox{\hyperlink{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_world}{IWorld}}}]{world}{}\end{DoxyParamCaption})}
+
+
+
+Attempts to move the creature by (dx, dy) within the given world. The world is responsible for enforcing bounds, collisions, combat and looting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & Delta X.\\
+\hline
+{\em dy} & Delta Y.\\
+\hline
+{\em world} & World that enforces rules for the move.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a0033cd7c2bc0eaa63caa634f3d0b65f5}\index{Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}!ReceiveHit@{ReceiveHit}}
+\index{ReceiveHit@{ReceiveHit}!Mandatory2DGameFramework.Interfaces.ICreature@{Mandatory2DGameFramework.Interfaces.ICreature}}
+\doxysubsubsection{\texorpdfstring{ReceiveHit()}{ReceiveHit()}}
+{\footnotesize\ttfamily \label{interface_mandatory2_d_game_framework_1_1_interfaces_1_1_i_creature_a0033cd7c2bc0eaa63caa634f3d0b65f5} 
+void Mandatory2\+DGame\+Framework.\+Interfaces.\+ICreature.\+Receive\+Hit (\begin{DoxyParamCaption}\item[{int}]{hit}{}\end{DoxyParamCaption})}
+
+
+
+Applies incoming damage to this creature, including defense and combat strategy effects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hit} & Raw incoming damage.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/eriki/\+One\+Drive -\/ Zealand/\+Semester 4/\+Adv\+C/\+Obl\+Opg/\+Mandatory2\+DGame\+Framework/\+Mandatory2\+DGame\+Framework/\+Interfaces/ICreature.\+cs\end{DoxyCompactItemize}
